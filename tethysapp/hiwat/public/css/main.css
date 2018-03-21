@@ -1,0 +1,19 @@
+#app-content-wrapper #app-content{height:100%;}
+#inner-app-content{padding:0;}
+.error{font-size:200%;color:red;}
+#logos {
+  padding: 5px 0;
+  white-space: nowrap;
+  width: 100%;
+  display: table;
+}
+
+.logo-image {
+  vertical-align: middle;
+  display: table-cell;
+  padding: 0 2px;
+}
+
+.logo-image img {
+  max-width: 100%;
+}
