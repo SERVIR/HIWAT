@@ -17,9 +17,14 @@ var LIBRARY_OBJECT = (function() {
     /************************************************************************
      *                      MODULE LEVEL / GLOBAL VARIABLES
      *************************************************************************/
-    var $btnGetPlot,
+    var animationDelay,
+        $btnGetPlot,
         current_layer,
+        day1_options,
+        day2_options,
+        det_options,
         element,
+        hourly_options,
         layers,
         map,
         $modalUpload,
@@ -30,6 +35,12 @@ var LIBRARY_OBJECT = (function() {
         selectedFeatures,
         shp_layer,
         shp_source,
+        $slider,
+        $sliderContainer,
+        slider_max,
+        sliderInterval,
+        styling,
+        var_options,
         wms_url,
         wms_layer,
         wms_source;
@@ -38,8 +49,15 @@ var LIBRARY_OBJECT = (function() {
     /************************************************************************
      *                    PRIVATE FUNCTION DECLARATIONS
      *************************************************************************/
-    var clear_coords,
+    var add_wms,
+        animate,
+        update_wms,
+        clear_coords,
+        gen_color_bar,
         get_ts,
+        gen_slider,
+        get_styling,
+        init_dropdown,
         init_events,
         init_jquery_vars,
         init_all,
@@ -58,8 +76,25 @@ var LIBRARY_OBJECT = (function() {
 
 
     init_jquery_vars = function(){
+        $slider = $("#slider");
+        $sliderContainer = $("#slider-container");
         $modalChart = $("#chart-modal");
         $btnGetPlot = $("#btn-get-plot");
+        var $meta_element = $("#metadata");
+        wms_url = $meta_element.attr('data-wms-url');
+        var_options = $meta_element.attr('data-var-options');
+        var_options = JSON.parse(var_options);
+        hourly_options = $meta_element.attr('data-hourly-options');
+        hourly_options = JSON.parse(hourly_options);
+        det_options = $meta_element.attr('data-det-options');
+        det_options = JSON.parse(det_options);
+
+    };
+
+    init_dropdown = function () {
+        $(".interval_table").select2();
+        $(".var_table").select2();
+
     };
 
     init_map = function() {
@@ -118,7 +153,7 @@ var LIBRARY_OBJECT = (function() {
         });
 
 
-        layers = [baseLayer,vector_layer,shp_layer];
+        layers = [baseLayer,vector_layer,shp_layer,wms_layer];
 
         map = new ol.Map({
             target: document.getElementById("map"),
@@ -197,6 +232,7 @@ var LIBRARY_OBJECT = (function() {
                 var coords = parsed_feature["features"][0]["geometry"]["coordinates"];
                 var proj_coords = ol.proj.transform(coords, 'EPSG:3857','EPSG:4326');
                 $("#point-lat-lon").val(proj_coords);
+                get_ts();
 
             } else if (feature_type == 'Polygon'){
                 var coords = parsed_feature["features"][0]["geometry"]["coordinates"][0];
@@ -207,6 +243,7 @@ var LIBRARY_OBJECT = (function() {
                 });
                 var json_object = '{"type":"Polygon","coordinates":[['+proj_coords+']]}';
                 $("#poly-lat-lon").val(json_object);
+                get_ts();
             }
         });
         function saveData() {
@@ -232,27 +269,29 @@ var LIBRARY_OBJECT = (function() {
         //Retrieve the relevant modal or tool based on the map interaction item
         $('#types').change(function (e) {
             featureType = $(this).find('option:selected').val();
+            clear_coords();
+            vector_layer.getSource().clear();
+            shp_layer.getSource().clear();
+            map.removeInteraction(draw);
+            if(featureType == 'None')
+            {
+                wms_layer.setVisible(true);
+            }else{
+                wms_layer.setVisible(false);
+            }
             if(featureType == 'None'){
                 $('#data').val('');
-                clear_coords();
+
                 map.removeInteraction(draw);
                 vector_layer.getSource().clear();
                 shp_layer.getSource().clear();
             }else if(featureType == 'Upload')
             {
-                clear_coords();
-                vector_layer.getSource().clear();
-                shp_layer.getSource().clear();
-                map.removeInteraction(draw);
                 $modalUpload.modal('show');
             }else if(featureType == 'Point')
             {
-                clear_coords();
-                shp_layer.getSource().clear();
                 addInteraction(featureType);
             }else if(featureType == 'Polygon'){
-                clear_coords();
-                shp_layer.getSource().clear();
                 addInteraction(featureType);
             }
         }).change();
@@ -303,6 +342,176 @@ var LIBRARY_OBJECT = (function() {
         init_jquery_vars();
         init_map();
         init_events();
+        init_dropdown();
+    };
+
+    gen_slider = function(interval){
+        $sliderContainer.removeClass('hidden');
+
+        if(interval == 'det'){
+
+            slider_max = 49;
+            $("#slider").slider({
+                value:0,
+                min: 0,
+                max: slider_max - 1,
+                step: 1, //Assigning the slider step based on the depths that were retrieved in the controller
+                animate:"fast",
+                slide: function( event, ui ) {
+                }
+
+            });
+            $sliderContainer.removeClass('hidden');
+
+        }else if(interval == 'hourly'){
+            slider_max = 48;
+            $( "#slider").slider({
+                value:0,
+                min: 0,
+                max: slider_max - 1,
+                step: 1, //Assigning the slider step based on the depths that were retrieved in the controller
+                animate:"fast",
+                slide: function( event, ui ) {
+                }
+
+            });
+            $sliderContainer.removeClass('hidden');
+
+        }else if(interval == 'day1' || interval == 'day2'){
+            slider_max = 0;
+            $( "#slider").slider({
+                value:0,
+                min: 0,
+                max: slider_max - 1,
+                step: 1, //Assigning the slider step based on the depths that were retrieved in the controller
+                animate:"fast",
+                slide: function( event, ui ) {
+                }
+
+            });
+            $sliderContainer.addClass('hidden');
+
+        }
+
+    };
+
+    gen_color_bar = function(colors,scale){
+        var cv  = document.getElementById('cv'),
+            ctx = cv.getContext('2d');
+        ctx.clearRect(0,0,cv.width,cv.height);
+
+        colors.forEach(function(color,i){
+            ctx.beginPath();
+            ctx.fillStyle = color;
+            ctx.fillRect(0,i*20,20,30);
+            ctx.fillText(scale[i].toFixed(2),30,i*20);
+        });
+    };
+    get_styling = function(scale){
+        var start = 'red';
+        var end = 'blue';
+        var sld_color_string = '';
+        if(scale[scale.length-1] == 0){
+            var colors = chroma.scale([start,start]).mode('lab').correctLightness().colors(20);
+            // var colors2 = chroma.scale([start,start]).classes(20);
+            // console.log(colors2);
+            gen_color_bar(colors,scale);
+            var color_map_entry = '<ColorMapEntry color="'+colors[0]+'" quantity="'+scale[0]+'" label="label1" opacity="0.7"/>';
+            sld_color_string += color_map_entry;
+        }else{
+            var colors = chroma.scale([start,end]).mode('lab').correctLightness().colors(20);
+            // var colors2 = chroma.scale([start,end]).classes(20);
+            // console.log(colors);
+            gen_color_bar(colors,scale);
+            colors.forEach(function(color,i){
+                var color_map_entry = '<ColorMapEntry color="'+color+'" quantity="'+scale[i]+'" label="label'+i+'" opacity="0.7"/>';
+                sld_color_string += color_map_entry;
+            });
+        }
+
+        return sld_color_string
+    };
+
+    add_wms = function(var_type,interval){
+        if(interval == 'det'){
+            $( "#slider-text" ).text(det_options[0][1]);
+            var ws = 'hiwat'+interval;
+            var store = var_type+'-'+det_options[0][0];
+            var layer_name = ws+':'+store;
+        }else if(interval=='hourly'){
+            $( "#slider-text" ).text(hourly_options[0][1]);
+            var ws = 'hiwat'+interval;
+            var store = var_type+'-'+hourly_options[0][0];
+            var layer_name = ws+':'+store;
+        }else if(interval=='day1'){
+            var ws = 'hiwat'+interval;
+            var store = var_type+'-'+interval;
+            var layer_name = ws+':'+store;
+        }else if(interval=='day2'){
+            var ws = 'hiwat'+interval;
+            var store = var_type+'-'+interval;
+            var layer_name = ws+':'+store;
+        }
+
+        map.removeLayer(wms_layer);
+        var index = find_var_index(var_type,var_options);
+        var scale = var_options[index]["scale"];
+        styling = get_styling(scale);
+        var sld_string = '<StyledLayerDescriptor version="1.0.0"><NamedLayer><Name>'+layer_name+'</Name><UserStyle><FeatureTypeStyle><Rule>\
+        <RasterSymbolizer> \
+        <ColorMap type="ramp"> \
+        <ColorMapEntry color="#f00" quantity="-9999" label="label0" opacity="0"/>'+
+            styling+'</ColorMap>\
+        </RasterSymbolizer>\
+        </Rule>\
+        </FeatureTypeStyle>\
+        </UserStyle>\
+        </NamedLayer>\
+        </StyledLayerDescriptor>';
+
+        wms_source = new ol.source.ImageWMS({
+            url: wms_url,
+            params: {'LAYERS':layer_name,'SLD_BODY':sld_string},
+            serverType: 'geoserver',
+            crossOrigin: 'Anonymous'
+        });
+
+        wms_layer = new ol.layer.Image({
+            name:'wms_layer',
+            source: wms_source
+        });
+
+        // wms_source.updateParams({'LAYERS':layer_name,'SLD_BODY':sld_string});
+
+        map.addLayer(wms_layer);
+        map.updateSize();
+    };
+
+    update_wms = function(var_type,uival,interval){
+        if(interval == 'det'){
+            $( "#slider-text" ).text(det_options[uival][1]);
+            var ws = 'hiwat'+interval;
+            var store = var_type+'-'+det_options[uival][0];
+            var layer_name = ws+':'+store;
+        }else if(interval=='hourly'){
+            $( "#slider-text" ).text(hourly_options[uival][1]);
+            var ws = 'hiwat'+interval;
+            var store = var_type+'-'+hourly_options[uival][0];
+            var layer_name = ws+':'+store;
+        }
+        var sld_string = '<StyledLayerDescriptor version="1.0.0"><NamedLayer><Name>'+layer_name+'</Name><UserStyle><FeatureTypeStyle><Rule>\
+        <RasterSymbolizer> \
+        <ColorMap type="ramp"> \
+        <ColorMapEntry color="#f00" quantity="-9999" label="label0" opacity="0"/>'+
+            styling+'</ColorMap>\
+        </RasterSymbolizer>\
+        </Rule>\
+        </FeatureTypeStyle>\
+        </UserStyle>\
+        </NamedLayer>\
+        </StyledLayerDescriptor>';
+
+        wms_source.updateParams({'LAYERS':layer_name,'SLD_BODY':sld_string});
     };
 
     get_ts = function(){
@@ -315,17 +524,23 @@ var LIBRARY_OBJECT = (function() {
 
         var interaction = $("#types option:selected").val();
         var sel_variable = $("#select_variable option:selected").val();
+        var var_type = ($("#var_table option:selected").val());
+        var interval_type = ($("#interval_table option:selected").val());
+
         if(interaction=="Point"){
             var geom_data = $("#point-lat-lon").val();
         }else if(interaction == "Polygon"){
             var geom_data = $("#poly-lat-lon").val();
         }
 
-        var xhr = ajax_update_database("get-ts",{"variable":sel_variable,"interaction":interaction,"geom_data":geom_data});
+        var xhr = ajax_update_database("get-ts",{"variable":var_type,"interval":interval_type,"interaction":interaction,"geom_data":geom_data});
         xhr.done(function(result) {
             if("success" in result) {
                 $modalChart.modal('show');
                 // var json_response = JSON.parse(result);
+                var index = find_var_index(var_type,var_options);
+                var display_name = var_options[index]["display_name"];
+                var units = var_options[index]["units"];
                 $('.error').html('');
                 $('#plotter').highcharts({
                     chart: {
@@ -339,7 +554,7 @@ var LIBRARY_OBJECT = (function() {
                         borderWidth: 3
                     },
                     title: {
-                        text: $("#select_variable option:selected").text() + " values at " + result.data["point"] ,
+                        text: $("#var_table option:selected").text() + " values at " + result.data["geom"] ,
                         style: {
                             fontSize: '14px'
                         }
@@ -355,18 +570,18 @@ var LIBRARY_OBJECT = (function() {
                             text: 'Date'
                         }
                     },
-                    // yAxis: {
-                    //     title: {
-                    //         text: 'Units'
-                    //     }
-                    //
-                    // },
+                    yAxis: {
+                        title: {
+                            text: units
+                        }
+
+                    },
                     exporting: {
                         enabled: true
                     },
                     series: [{
                         data:result.data["plot"],
-                        name: $("#select_variable option:selected").text()
+                        name: display_name
                     }]
 
                 });
@@ -379,6 +594,44 @@ var LIBRARY_OBJECT = (function() {
     };
 
     $("#btn-get-plot").on('click',get_ts);
+
+    animate = function(){
+        var sliderVal = $("#slider").slider("value");
+
+        sliderInterval = setInterval(function() {
+            $("#slider").slider("value", sliderVal);
+            sliderVal += 1;
+            if (sliderVal===slider_max - 1) sliderVal=0;
+        }, animationDelay);
+    };
+
+    $(".btn-run").on("click", animate);
+    //Set the slider value to the current value to start the animation at the );
+    $(".btn-stop").on("click", function() {
+        //Call clearInterval to stop the animation.
+        clearInterval(sliderInterval);
+    });
+
+    $(".btn-increase").on("click", function() {
+        clearInterval(sliderInterval);
+
+        if(animationDelay > 250){
+
+            animationDelay = animationDelay - 250;
+            $("#speed").text((1/(animationDelay/1000)).toFixed(2));
+            animate();
+        }
+
+    });
+
+    //Decrease the slider timer when you click decrease the speed
+    $(".btn-decrease").on("click", function() {
+        clearInterval(sliderInterval);
+        animationDelay = animationDelay + 250;
+        $("#speed").text((1/(animationDelay/1000)).toFixed(2));
+        animate();
+    });
+
 
     $(function() {
 
@@ -400,6 +653,50 @@ var LIBRARY_OBJECT = (function() {
     // the DOM tree finishes loading
     $(function() {
         init_all();
+        Highcharts.setOptions({lang: {noData: "No data to display. Use the map interaction to fill the chart."}});
+        var chart = Highcharts.chart('plotter', {
+            series: [{
+                data: []
+            }]
+        });
+        animationDelay  = 2000;
+        sliderInterval = {};
+        $("#speed").text(((animationDelay/1000)).toFixed(2));
+        $("#interval_table").change(function(){
+            var interval_type = ($("#interval_table option:selected").val());
+
+            $("#var_table").html('');
+
+            var_options.forEach(function(item,i){
+                if(item["category"]==interval_type){
+                    var new_option = new Option(item["display_name"]+' ('+item["units"]+')',item["id"]);
+                    $("#var_table").append(new_option);
+                }
+            });
+            $("#var_table").trigger('change');
+
+        }).change();
+
+        $("#var_table").change(function(){
+            $('#types').val('None').trigger('change');
+            var var_type = ($("#var_table option:selected").val());
+            var interval_type = ($("#interval_table option:selected").val());
+            gen_slider(interval_type);
+            add_wms(var_type,interval_type);
+        }).change();
+
+        $("#slider").on("slidechange", function(event, ui) {
+            var interval_type = ($("#interval_table option:selected").val());
+            var variable = ($("#var_table option:selected").val());
+            if(interval_type == 'det'){
+                $( "#slider-text" ).text(det_options[ui.value][1]); //Get the value from the slider
+                update_wms(variable,ui.value,interval_type);
+            }else if(interval_type == 'hourly'){
+                $( "#slider-text" ).text(hourly_options[ui.value][1]);
+                update_wms(variable,ui.value,interval_type);
+            }
+
+        });
 
     });
 

@@ -1,7 +1,10 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from tethys_sdk.gizmos import Button,SelectInput
-
+from config import geoserver,HIWAT_DET,HIWAT_HOURLY
+from utils import generate_variables_meta
+from hiwat import det_time_options,hourly_time_options
+import json
 
 def home(request):
     """
@@ -27,9 +30,21 @@ def home(request):
                                   options=variable_options,
                                   initial=['Total Accumulated Precipitation(mm)'])
 
-    context = {
-        'select_variable':select_variable
+    geoserver_wms_url = geoserver["wms_url"]
 
+    var_options = generate_variables_meta()
+
+    det_options = det_time_options(HIWAT_DET,'det')
+
+    hourly_options = hourly_time_options(HIWAT_HOURLY,'hourly')
+
+
+    context = {
+        'select_variable':select_variable,
+        'geoserver_wms_url':geoserver_wms_url,
+        'var_options':json.dumps(var_options),
+        'det_options':json.dumps(det_options),
+        'hourly_options':json.dumps(hourly_options)
     }
 
     return render(request, 'hiwat/home.html', context)

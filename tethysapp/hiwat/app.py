@@ -8,7 +8,7 @@ class Hiwat(TethysAppBase):
 
     name = 'HIWAT'
     index = 'hiwat:home'
-    icon = 'hiwat/images/icon.gif'
+    icon = 'hiwat/images/logo.png'
     package = 'hiwat'
     root_url = 'hiwat'
     color = '#c0392b'
