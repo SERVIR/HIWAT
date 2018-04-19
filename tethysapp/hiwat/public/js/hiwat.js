@@ -29,6 +29,7 @@ var LIBRARY_OBJECT = (function() {
         map,
         $modalUpload,
         $modalChart,
+        opacity,
         popup,
         public_interface,			// Object returned by the module
         select_source,
@@ -61,7 +62,8 @@ var LIBRARY_OBJECT = (function() {
         init_events,
         init_jquery_vars,
         init_all,
-        init_map;
+        init_map,
+        init_opacity_slider;
 
 
     /************************************************************************
@@ -343,6 +345,22 @@ var LIBRARY_OBJECT = (function() {
         init_map();
         init_events();
         init_dropdown();
+        init_opacity_slider();
+    };
+
+    init_opacity_slider = function(){
+        opacity = 0.7;
+        $("#opacity").text(opacity);
+        $( "#opacity-slider" ).slider({
+            value:opacity,
+            min: 0.2,
+            max: 1,
+            step: 0.1, //Assigning the slider step based on the depths that were retrieved in the controller
+            animate:"fast",
+            slide: function( event, ui ) {
+
+            }
+        });
     };
 
     gen_slider = function(interval){
@@ -411,20 +429,22 @@ var LIBRARY_OBJECT = (function() {
         // var start = 'blue';
         // var end = 'red';
         var sld_color_string = '';
+
         if(scale[scale.length-1] == 0){
             var colors = chroma.scale([start,start]).mode('lab').correctLightness().colors(20);
             // var colors2 = chroma.scale([start,start]).classes(20);
             // console.log(colors2);
             gen_color_bar(colors,scale);
-            var color_map_entry = '<ColorMapEntry color="'+colors[0]+'" quantity="'+scale[0]+'" label="label1" opacity="0.7"/>';
+            var color_map_entry = '<ColorMapEntry color="'+colors[0]+'" quantity="'+scale[0]+'" label="label1" opacity="'+opacity+'"/>';
             sld_color_string += color_map_entry;
         }else{
             var colors = chroma.scale([start,end]).mode('lab').correctLightness().colors(20);
+
             // var colors2 = chroma.scale([start,end]).classes(20);
             // console.log(colors);
             gen_color_bar(colors,scale);
             colors.forEach(function(color,i){
-                var color_map_entry = '<ColorMapEntry color="'+color+'" quantity="'+scale[i]+'" label="label'+i+'" opacity="0.7"/>';
+                var color_map_entry = '<ColorMapEntry color="'+color+'" quantity="'+scale[i]+'" label="label'+i+'" opacity="'+opacity+'"/>';
                 sld_color_string += color_map_entry;
             });
         }
@@ -697,6 +717,27 @@ var LIBRARY_OBJECT = (function() {
             }
 
         });
+
+        $("#opacity-slider").on("slidechange", function(event, ui) {
+            opacity = ui.value;
+            $("#opacity").text(opacity);
+            wms_layer.setOpacity(opacity);
+            // var interval_type = ($("#interval_table option:selected").val());
+            // var variable = ($("#var_table option:selected").val());
+            // var index = find_var_index(variable,var_options);
+            // var scale = var_options[index]["scale"];
+            // styling = get_styling(scale,var_options[index]["start"],var_options[index]["end"]);
+            // var slider_val = $slider.slider("value");
+            // if(interval_type == 'det'){
+            //     $( "#slider-text" ).text(det_options[slider_val][1]); //Get the value from the slider
+            //     update_wms(variable,slider_val,interval_type);
+            // }else if(interval_type == 'hourly'){
+            //     $( "#slider-text" ).text(hourly_options[slider_val][1]);
+            //     update_wms(variable,slider_val,interval_type);
+            // }
+
+        });
+
 
     });
 

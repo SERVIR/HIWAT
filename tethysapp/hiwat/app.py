@@ -34,6 +34,16 @@ class Hiwat(TethysAppBase):
                 url='hiwat/get-ts',
                 controller='hiwat.ajax_controllers.get_ts'
             ),
+            UrlMap(
+                name='get-point-ts',
+                url='hiwat/api/getPointTimeseries',
+                controller='hiwat.api.get_point_ts'
+            ),
+            UrlMap(
+                name='get-polygon-ts',
+                url='hiwat/api/getPolygonTimeseries',
+                controller='hiwat.api.get_polygon_ts'
+            ),
         )
 
         return url_maps
