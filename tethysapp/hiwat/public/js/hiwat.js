@@ -407,9 +407,9 @@ var LIBRARY_OBJECT = (function() {
             ctx.fillText(scale[i].toFixed(2),30,i*20);
         });
     };
-    get_styling = function(scale){
-        var start = 'red';
-        var end = 'blue';
+    get_styling = function(scale,start,end){
+        // var start = 'blue';
+        // var end = 'red';
         var sld_color_string = '';
         if(scale[scale.length-1] == 0){
             var colors = chroma.scale([start,start]).mode('lab').correctLightness().colors(20);
@@ -456,7 +456,7 @@ var LIBRARY_OBJECT = (function() {
         map.removeLayer(wms_layer);
         var index = find_var_index(var_type,var_options);
         var scale = var_options[index]["scale"];
-        styling = get_styling(scale);
+        styling = get_styling(scale,var_options[index]["start"],var_options[index]["end"]);
         var sld_string = '<StyledLayerDescriptor version="1.0.0"><NamedLayer><Name>'+layer_name+'</Name><UserStyle><FeatureTypeStyle><Rule>\
         <RasterSymbolizer> \
         <ColorMap type="ramp"> \
@@ -659,7 +659,7 @@ var LIBRARY_OBJECT = (function() {
                 data: []
             }]
         });
-        animationDelay  = 2000;
+        animationDelay  = 1500;
         sliderInterval = {};
         $("#speed").text(((animationDelay/1000)).toFixed(2));
         $("#interval_table").change(function(){

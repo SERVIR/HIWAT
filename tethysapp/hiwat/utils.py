@@ -186,6 +186,8 @@ def generate_variables_meta():
             units = linevals[3]
             vmin = linevals[4]
             vmax = linevals[5]
+            start = linevals[6]
+            end = linevals[7]
             scale = calc_color_range(float(vmin),float(vmax))
             variable_list.append({
                 'id': variable_id,
@@ -194,6 +196,8 @@ def generate_variables_meta():
                 'units': units,
                 'min':vmin,
                 'max':vmax,
+                'start':start,
+                'end':end,
                 'scale':scale
             })
 

@@ -1,44 +1,43 @@
-Var|Category|Display_name|units|min|max
-enspmm-prec1h|hourly|1-hour accumulated Preciptation(Prob. matched Mean)|number|-0.0048289318|62.1361
-enspmm-prectot|hourly|Total Accumulated Preciptation(Prob. matched Mean)|number|0.0|124.118225
-enspmm-refc|hourly|Composite Reflectivity(Prob. matched Mean)|number|0.0|59.982056
-ensprob-lfa-max-thresh0.07|hourly|Hourly Prob of Lightning >0.07 flashes/km2/5min +/- 20km|number|0.0|100
-ensprob-lfa-max-thresh5|hourly|Hourly Prob of Lightning >5 flashes/km2/5min +/- 20km|number|0.0|100
-ensprob-refc-thresh50|hourly|Hourly Prob of Composite Reflectivity >50 dbZ +/- 20km|number|0.0|59.982056
-ensprob-spd10m-thresh40|hourly|Hourly Prob. of Max 10-m Wind Speed >40 kt +/- 20km|number|0.0|100
-ensprob-spd10m-thresh50|hourly|Hourly Prob. of Max 10-m Wind Speed >50 kt +/- 20km|number|0.0|100
-ensprob-tcolg-thresh30|hourly|Hourly Prob of 1-hr Max Integrated graupel >30 kg/m2 +/- 20km|number|0.0|100
-ensprob-tcolg-thresh40|hourly|Hourly Prob of 1-hr Max Integrated graupel >40 kg/m2 +/- 20km|number|0.0|100
-ensprob-uphlcy25-thresh100|hourly|Hourly Prob of 1-hr Max 2-5 km updraft helicity >100 m2/s2 +/- 20km|number|0.0|100
-ensprob-uphlcy25-thresh200|hourly|Hourly Prob of 1-hr Max 2-5 km updraft helicity >200 m2/s2 +/- 20km|number|0.0|100
-DPT_2maboveground|det|Dew Point Temperature|C|-79.6331|26.631737
-TMP_2maboveground|det|Temperature|C|-38.046947|44.098705
-PRMSL_meansealevel|det|Pressure Reduced To MSL|hPa|984.7841|1058.0443
-APCP_surface|det|Total Precipitation|mm|0.0|107.58855
-CAPE_surface|det|Convective Available Potential Energy|J/kg|0.0|5304.381
-HGT_500mb|det|Geopotential Height|m|5590.2363|5887.209
-HLCY_0M3000maboveground|det|0-3 km Storm Relative Helicity|m^2/s^2|-610.5833|1097.117
-PWAT_entireatmosphere|det|Precipitable Water|mm|0.09517305|65.668495
-WDIR_10maboveground|det|Wind Direction (from Which Blowing)|degrees|0.20451105|699.6146
-WDIR_250mb|det|Wind Direction (from Which Blowing)|degrees|0.067993835|699.7278
-WIND_10maboveground|det|Wind Speed|knots|0.079649605|54.743423
-WIND_250mb|det|Wind Speed|knots|0.18117157|124.156364
-PCP|det|Hourly Precipitation|mm|-0.0040002414|44.857002
-Prob_lfa_thresh5|day1|Day-1 Prob. > 5 +/- 20 km: fhrs 01-24|number|0.0|97.71314
-Prob_precip_thresh50|day1|Day-1 Prob. > 50 +/- 20 km: fhrs 01-24|number|0.0|44.30848
-Prob_refc_thresh50|day1|Day-1 Prob. > 50 +/- 20 km: fhrs 01-24|number|0.0|100.0
-Prob_spd10m_thresh40|day1|Day-1 Prob. > 40 +/- 20 km: fhrs 01-24|number|0.0|100.0
-Prob_spd10m_thresh50|day1|Day-1 Prob. > 50 +/- 20 km: fhrs 01-24|number|0.0|99.15579
-Prob_tcolg_thresh30|day1|Day-1 Prob. > 30 +/- 20 km: fhrs 01-24|number|0.0|99.96737
-Prob_tcolg_thresh40|day1|Day-1 Prob. > 40 +/- 20 km: fhrs 01-24|number|0.0|75.56215
-Prob_uphlcy_thresh100|day1|Day-1 Prob. > 100 +/- 20 km: fhrs 01-24|number|0.0|97.82754
-Prob_uphlcy_thresh200|day1|Day-1 Prob. > 200 +/- 20 km: fhrs 01-24|number|0.0|79.94511
-Prob_lfa_thresh5|day2|Day-2 Prob. > 5 +/- 20 km: fhrs 25-48|number|0.0|86.53092
-Prob_precip_thresh50|day2|Day-2 Prob. > 50 +/- 20 km: fhrs 25-48|number|0.0|24.93064
-Prob_refc_thresh50|day2|Day-2 Prob. > 50 +/- 20 km: fhrs 25-48|number|0.0|99.9696
-Prob_spd10m_thresh40|day2|Day-2 Prob. > 40 +/- 20 km: fhrs 25-48|number|0.0|96.14032
-Prob_spd10m_thresh50|day2|Day-2 Prob. > 50 +/- 20 km: fhrs 25-48|number|0.0|79.395485
-Prob_tcolg_thresh30|day2|Day-2 Prob. > 30 +/- 20 km: fhrs 25-48|number|0.0|97.98326
-Prob_tcolg_thresh40|day2|Day-2 Prob. > 40 +/- 20 km: fhrs 25-48|number|0.0|68.855515
-Prob_uphlcy_thresh100|day2|Day-2 Prob. > 100 +/- 20 km: fhrs 25-48|number|0.0|88.80576
-Prob_uphlcy_thresh200|day2|Day-2 Prob. > 200 +/- 20 km: fhrs 25-48|number|0.0|49.252907
+Var|Category|Display_name|units|min|max|start|end
+enspmm-prec1h|hourly|1-hour accumulated Preciptation|%|10|100|green|red
+enspmm-prectot|hourly|Total Accumulated Preciptation|%|10|100|green|red
+enspmm-refc|hourly|Composite Reflectivity|%|10|100|blue|red
+ensprob-lfa-max-thresh5|hourly|Prob. of Frequent Lightning|%|10|100|yellow|red
+ensprob-refc-thresh50|hourly|Prob. of Reflectivity>50 dBz|%|10|100|blue|red
+ensprob-spd10m-thresh40|hourly|Prob. of Winds>40kts|%|10|100|blue|red
+ensprob-spd10m-thresh50|hourly|Prob. of Winds>50kts|%|10|100|blue|red
+ensprob-tcolg-thresh30|hourly|Prob. of Moderate Hail Threat|%|10|100|blue|red
+ensprob-tcolg-thresh40|hourly|Prob. of High Hail Threat|%|10|100|blue|red
+ensprob-uphlcy25-thresh100|hourly|Prob. of Moderate Supercell Threat|%|10|100|blue|red
+ensprob-uphlcy25-thresh200|hourly|Prob. of High Supercell Threat|%|10|100|blue|red
+DPT_2maboveground|det|Dew Point Temperature|C|-27|45|blue|red
+TMP_2maboveground|det|Temperature|C|-27|45|blue|red
+PRMSL_meansealevel|det|MSLPressure|hPa|980|1040|blue|red
+APCP_surface|det|Total Precipitation|mm|0.0|200|green|red
+CAPE_surface|det|CAPE|J/kg|100|5000|blue|red
+HGT_500mb|det|500 hPa Height|m|5580|5880|blue|red
+HLCY_0M3000maboveground|det|0-3 km SRH|m^2/s^2|50|700|blue|red
+PWAT_entireatmosphere|det|Precipitable Water|mm|2.5|70|red|blue
+WDIR_10maboveground|det|10m Wind Direction|degrees|0|360|blue|red
+WDIR_250mb|det|250 hPa Wind Direction|degrees|0|360|blue|red
+WIND_10maboveground|det|10m Wind Speed|knots|5|50|blue|red
+WIND_250mb|det|250 m Wind Speed|knots|20|150|blue|red
+PCP|det|Hourly Precipitation|mm|1|50|green|red
+Prob_lfa_thresh5|day1|Prob. of Frequent Lightning|%|10|100|yellow|red
+Prob_precip_thresh50|day1|Prob. of Intense Precipitation|%|10|100|blue|red
+Prob_refc_thresh50|day1|Prob. of Reflectivity>50 dBz|%|10|100.0|blue|red
+Prob_spd10m_thresh40|day1|Prob. of Winds>40kts|%|10|100.0|blue|red
+Prob_spd10m_thresh50|day1|Prob. of Winds>50kts|%|10|100|blue|red
+Prob_tcolg_thresh30|day1|Prob. of Moderate Hail Threat|%|10|100|blue|red
+Prob_tcolg_thresh40|day1|Prob. of High Hail Threat|%|10|100|blue|red
+Prob_uphlcy_thresh100|day1|Prob. of Moderate Supercell Threat|%|10|100|blue|red
+Prob_uphlcy_thresh200|day1|Prob. of High Supercell Threat|%|10|100|blue|red
+Prob_lfa_thresh5|day2|Prob. of Frequent Lightning|%|10|100|yellow|red
+Prob_precip_thresh50|day2|Prob. of Intense Precipitation|%|10|100|blue|red
+Prob_refc_thresh50|day2|Prob. of Reflectivity>50 dBz|%|10|100.0|blue|red
+Prob_spd10m_thresh40|day2|Prob. of Winds>40kts|%|10|100.0|blue|red
+Prob_spd10m_thresh50|day2|Prob. of Winds>50kts|%|10|100|blue|red
+Prob_tcolg_thresh30|day2|Prob. of Moderate Hail Threat|%|10|100|blue|red
+Prob_tcolg_thresh40|day2|Prob. of High Hail Threat|%|10|100|blue|red
+Prob_uphlcy_thresh100|day2|Prob. of Moderate Supercell Threat|%|10|100|blue|red
+Prob_uphlcy_thresh200|day2|Prob. of High Supercell Threat|%|10|100|blue|red

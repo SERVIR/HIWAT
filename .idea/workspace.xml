@@ -3,13 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b711ed3c-1832-4001-ad20-9ce133638d10" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/tethysapp/hiwat/ajax_controllers.py" afterPath="$PROJECT_DIR$/tethysapp/hiwat/ajax_controllers.py" />
-      <change beforePath="$PROJECT_DIR$/tethysapp/hiwat/app.py" afterPath="$PROJECT_DIR$/tethysapp/hiwat/app.py" />
-      <change beforePath="$PROJECT_DIR$/tethysapp/hiwat/config.py" afterPath="$PROJECT_DIR$/tethysapp/hiwat/config.py" />
-      <change beforePath="$PROJECT_DIR$/tethysapp/hiwat/controllers.py" afterPath="$PROJECT_DIR$/tethysapp/hiwat/controllers.py" />
-      <change beforePath="$PROJECT_DIR$/tethysapp/hiwat/public/css/main.css" afterPath="$PROJECT_DIR$/tethysapp/hiwat/public/css/main.css" />
+      <change beforePath="$PROJECT_DIR$/tethysapp/hiwat/public/data/var_info.txt" afterPath="$PROJECT_DIR$/tethysapp/hiwat/public/data/var_info.txt" />
       <change beforePath="$PROJECT_DIR$/tethysapp/hiwat/public/js/hiwat.js" afterPath="$PROJECT_DIR$/tethysapp/hiwat/public/js/hiwat.js" />
-      <change beforePath="$PROJECT_DIR$/tethysapp/hiwat/templates/hiwat/home.html" afterPath="$PROJECT_DIR$/tethysapp/hiwat/templates/hiwat/home.html" />
       <change beforePath="$PROJECT_DIR$/tethysapp/hiwat/utils.py" afterPath="$PROJECT_DIR$/tethysapp/hiwat/utils.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,14 +38,35 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="hiwat.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/hiwat.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4536">
+              <caret line="252" column="39" lean-forward="false" selection-start-line="252" selection-start-column="39" selection-end-line="252" selection-end-column="39" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="var_info.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/public/data/var_info.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="756">
+              <caret line="42" column="66" lean-forward="true" selection-start-line="42" selection-start-column="66" selection-end-line="42" selection-end-column="66" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="ajax_controllers.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/ajax_controllers.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="234">
-              <caret line="16" column="37" lean-forward="false" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="37" />
+              <caret line="13" column="34" lean-forward="true" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
               <folding>
-                <marker date="1524070835167" expanded="true" signature="0:122" ph="import ..." />
-                <marker date="1524070835167" expanded="true" signature="221:726" ph="..." />
+                <element signature="e#0#50#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -59,8 +75,8 @@
       <file leaf-file-name="utils.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="48" column="4" lean-forward="false" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="4" />
+            <state relative-caret-position="3582">
+              <caret line="199" column="26" lean-forward="false" selection-start-line="199" selection-start-column="26" selection-end-line="199" selection-end-column="26" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -68,7 +84,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="config.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/config.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="144">
@@ -78,38 +94,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/templates/hiwat/base.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/templates/hiwat/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1098">
+            <state relative-caret-position="1170">
               <caret line="65" column="4" lean-forward="false" selection-start-line="65" selection-start-column="4" selection-end-line="65" selection-end-column="4" />
               <folding>
                 <element signature="e#4962#4969#1" expanded="true" />
                 <element signature="e#7496#7503#1" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#9;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#9;n#!!top" expanded="true" />
-                <marker date="1524071830363" expanded="true" signature="3714:4447" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/public/css/main.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="2" column="33" lean-forward="false" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -126,13 +121,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="hiwat.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="hiwat.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/public/js/hiwat.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7002">
-              <caret line="544" column="42" lean-forward="false" selection-start-line="544" selection-start-column="42" selection-end-line="544" selection-end-column="42" />
+            <state relative-caret-position="584">
+              <caret line="661" column="26" lean-forward="false" selection-start-line="661" selection-start-column="26" selection-end-line="661" selection-end-column="26" />
               <folding>
-                <marker date="1524071330907" expanded="true" signature="20122:20253" ph="//..." />
+                <marker date="1524143358032" expanded="true" signature="15684:16092" ph="..." />
+                <marker date="1524143358032" expanded="true" signature="15696:16058" ph="..." />
+                <marker date="1524143358032" expanded="true" signature="15734:16035" ph="..." />
+                <marker date="1524143358032" expanded="true" signature="15752:16013" ph="..." />
+                <marker date="1524143358032" expanded="true" signature="15758:15984" ph="..." />
+                <marker date="1524143358032" expanded="true" signature="15786:15967" ph="..." />
+                <marker date="1524143358032" expanded="true" signature="15819:15938" ph="..." />
+                <marker date="1524143358032" expanded="true" signature="17192:17600" ph="..." />
+                <marker date="1524143358032" expanded="true" signature="17204:17566" ph="..." />
+                <marker date="1524143358032" expanded="true" signature="17242:17543" ph="..." />
+                <marker date="1524143358032" expanded="true" signature="17260:17521" ph="..." />
+                <marker date="1524143358032" expanded="true" signature="17266:17492" ph="..." />
+                <marker date="1524143358032" expanded="true" signature="17294:17475" ph="..." />
+                <marker date="1524143358032" expanded="true" signature="17327:17446" ph="..." />
               </folding>
             </state>
           </provider>
@@ -152,6 +160,7 @@
     <findStrings>
       <find>turn_off_utilsLayers</find>
       <find>shpLayer</find>
+      <find>Dew</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -167,9 +176,10 @@
         <option value="$PROJECT_DIR$/tethysapp/hiwat/controllers.py" />
         <option value="$PROJECT_DIR$/tethysapp/hiwat/ajax_controllers.py" />
         <option value="$PROJECT_DIR$/tethysapp/hiwat/templates/hiwat/home.html" />
-        <option value="$PROJECT_DIR$/tethysapp/hiwat/public/js/hiwat.js" />
-        <option value="$PROJECT_DIR$/tethysapp/hiwat/utils.py" />
         <option value="$PROJECT_DIR$/tethysapp/hiwat/config.py" />
+        <option value="$PROJECT_DIR$/tethysapp/hiwat/utils.py" />
+        <option value="$PROJECT_DIR$/tethysapp/hiwat/public/data/var_info.txt" />
+        <option value="$PROJECT_DIR$/tethysapp/hiwat/public/js/hiwat.js" />
       </list>
     </option>
   </component>
@@ -231,6 +241,14 @@
               <item name="tethysapp-hiwat" type="462c0819:PsiDirectoryNode" />
               <item name="tethysapp" type="462c0819:PsiDirectoryNode" />
               <item name="hiwat" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tethysapp-hiwat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tethysapp-hiwat" type="462c0819:PsiDirectoryNode" />
+              <item name="tethysapp" type="462c0819:PsiDirectoryNode" />
+              <item name="hiwat" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -245,8 +263,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -284,7 +302,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="2495" height="1339" extended-state="6" />
+    <frame x="65" y="-4" width="1207" height="1330" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -293,7 +311,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21202405" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4382767" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -320,24 +338,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="15" lean-forward="false" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="34" column="4" lean-forward="false" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/app.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="612">
@@ -361,8 +361,7 @@
         <state relative-caret-position="234">
           <caret line="15" column="37" lean-forward="false" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="37" />
           <folding>
-            <marker date="1524070835167" expanded="true" signature="0:122" ph="import ..." />
-            <marker date="1524070835167" expanded="true" signature="221:726" ph="..." />
+            <element signature="e#0#50#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -371,7 +370,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -384,7 +382,6 @@
             <element signature="e#7496#7503#1" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#9;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#9;n#!!top" expanded="true" />
-            <marker date="1524071830363" expanded="true" signature="3714:4447" ph="..." />
           </folding>
         </state>
       </provider>
@@ -412,7 +409,20 @@
         <state relative-caret-position="5814">
           <caret line="329" column="42" lean-forward="true" selection-start-line="329" selection-start-column="42" selection-end-line="329" selection-end-column="42" />
           <folding>
-            <marker date="1524071330907" expanded="true" signature="20122:20253" ph="//..." />
+            <marker date="1524143358032" expanded="true" signature="15684:16092" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="15696:16058" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="15734:16035" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="15752:16013" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="15758:15984" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="15786:15967" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="15819:15938" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="17192:17600" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="17204:17566" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="17242:17543" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="17260:17521" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="17266:17492" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="17294:17475" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="17327:17446" ph="..." />
           </folding>
         </state>
       </provider>
@@ -448,8 +458,7 @@
         <state relative-caret-position="234">
           <caret line="15" column="37" lean-forward="false" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="37" />
           <folding>
-            <marker date="1524070835167" expanded="true" signature="0:122" ph="import ..." />
-            <marker date="1524070835167" expanded="true" signature="221:726" ph="..." />
+            <element signature="e#0#50#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -476,7 +485,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -489,7 +497,6 @@
             <element signature="e#7496#7503#1" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#9;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#9;n#!!top" expanded="true" />
-            <marker date="1524071830363" expanded="true" signature="3714:4447" ph="..." />
           </folding>
         </state>
       </provider>
@@ -517,7 +524,20 @@
         <state relative-caret-position="5814">
           <caret line="329" column="42" lean-forward="true" selection-start-line="329" selection-start-column="42" selection-end-line="329" selection-end-column="42" />
           <folding>
-            <marker date="1524071330907" expanded="true" signature="20122:20253" ph="//..." />
+            <marker date="1524143358032" expanded="true" signature="15684:16092" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="15696:16058" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="15734:16035" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="15752:16013" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="15758:15984" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="15786:15967" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="15819:15938" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="17192:17600" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="17204:17566" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="17242:17543" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="17260:17521" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="17266:17492" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="17294:17475" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="17327:17446" ph="..." />
           </folding>
         </state>
       </provider>
@@ -545,8 +565,7 @@
         <state relative-caret-position="252">
           <caret line="16" column="42" lean-forward="false" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
           <folding>
-            <marker date="1524070835167" expanded="true" signature="0:122" ph="import ..." />
-            <marker date="1524070835167" expanded="true" signature="221:726" ph="..." />
+            <element signature="e#0#50#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -563,7 +582,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -576,7 +594,6 @@
             <element signature="e#7496#7503#1" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#9;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#9;n#!!top" expanded="true" />
-            <marker date="1524071830363" expanded="true" signature="3714:4447" ph="..." />
           </folding>
         </state>
       </provider>
@@ -604,7 +621,20 @@
         <state relative-caret-position="5868">
           <caret line="332" column="37" lean-forward="true" selection-start-line="332" selection-start-column="37" selection-end-line="332" selection-end-column="37" />
           <folding>
-            <marker date="1524071330907" expanded="true" signature="20122:20253" ph="//..." />
+            <marker date="1524143358032" expanded="true" signature="15684:16092" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="15696:16058" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="15734:16035" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="15752:16013" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="15758:15984" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="15786:15967" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="15819:15938" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="17192:17600" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="17204:17566" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="17242:17543" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="17260:17521" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="17266:17492" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="17294:17475" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="17327:17446" ph="..." />
           </folding>
         </state>
       </provider>
@@ -642,8 +672,7 @@
         <state relative-caret-position="126">
           <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding>
-            <marker date="1524070835167" expanded="true" signature="0:122" ph="import ..." />
-            <marker date="1524070835167" expanded="true" signature="221:726" ph="..." />
+            <element signature="e#0#50#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -660,7 +689,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -673,7 +701,6 @@
             <element signature="e#7496#7503#1" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#9;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#9;n#!!top" expanded="true" />
-            <marker date="1524071830363" expanded="true" signature="3714:4447" ph="..." />
           </folding>
         </state>
       </provider>
@@ -701,7 +728,20 @@
         <state relative-caret-position="5832">
           <caret line="324" column="35" lean-forward="true" selection-start-line="324" selection-start-column="35" selection-end-line="324" selection-end-column="35" />
           <folding>
-            <marker date="1524071330907" expanded="true" signature="20122:20253" ph="//..." />
+            <marker date="1524143358032" expanded="true" signature="15684:16092" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="15696:16058" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="15734:16035" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="15752:16013" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="15758:15984" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="15786:15967" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="15819:15938" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="17192:17600" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="17204:17566" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="17242:17543" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="17260:17521" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="17266:17492" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="17294:17475" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="17327:17446" ph="..." />
           </folding>
         </state>
       </provider>
@@ -728,7 +768,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -742,55 +781,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/templates/hiwat/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1098">
+        <state relative-caret-position="1170">
           <caret line="65" column="4" lean-forward="false" selection-start-line="65" selection-start-column="4" selection-end-line="65" selection-end-column="4" />
           <folding>
             <element signature="e#4962#4969#1" expanded="true" />
             <element signature="e#7496#7503#1" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#9;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#9;n#!!top" expanded="true" />
-            <marker date="1524071830363" expanded="true" signature="3714:4447" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/public/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4986">
-          <caret line="277" column="16" lean-forward="false" selection-start-line="277" selection-start-column="16" selection-end-line="277" selection-end-column="16" />
-          <folding>
-            <marker date="1520517320199" expanded="true" signature="2899:2906" ph="×" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/public/js/hiwat.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7002">
-          <caret line="544" column="42" lean-forward="false" selection-start-line="544" selection-start-column="42" selection-end-line="544" selection-end-column="42" />
-          <folding>
-            <marker date="1524071330907" expanded="true" signature="20122:20253" ph="//..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="48" column="4" lean-forward="false" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/ajax_controllers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="16" column="37" lean-forward="false" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="37" />
-          <folding>
-            <marker date="1524070835167" expanded="true" signature="0:122" ph="import ..." />
-            <marker date="1524070835167" expanded="true" signature="221:726" ph="..." />
           </folding>
         </state>
       </provider>
@@ -805,11 +802,82 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/ajax_controllers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="13" column="34" lean-forward="true" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/config.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="8" column="15" lean-forward="false" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/public/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4986">
+          <caret line="277" column="16" lean-forward="false" selection-start-line="277" selection-start-column="16" selection-end-line="277" selection-end-column="16" />
+          <folding>
+            <marker date="1520517320199" expanded="true" signature="2899:2906" ph="×" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3582">
+          <caret line="199" column="26" lean-forward="false" selection-start-line="199" selection-start-column="26" selection-end-line="199" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/hiwat.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4536">
+          <caret line="252" column="39" lean-forward="false" selection-start-line="252" selection-start-column="39" selection-end-line="252" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/public/data/var_info.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="42" column="66" lean-forward="true" selection-start-line="42" selection-start-column="66" selection-end-line="42" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/public/js/hiwat.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="584">
+          <caret line="661" column="26" lean-forward="false" selection-start-line="661" selection-start-column="26" selection-end-line="661" selection-end-column="26" />
+          <folding>
+            <marker date="1524143358032" expanded="true" signature="15684:16092" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="15696:16058" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="15734:16035" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="15752:16013" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="15758:15984" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="15786:15967" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="15819:15938" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="17192:17600" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="17204:17566" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="17242:17543" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="17260:17521" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="17266:17492" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="17294:17475" ph="..." />
+            <marker date="1524143358032" expanded="true" signature="17327:17446" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
