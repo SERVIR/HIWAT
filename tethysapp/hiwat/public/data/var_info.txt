@@ -1,7 +1,7 @@
 Var|Category|Display_name|units|min|max|start|end
-enspmm-prec1h|hourly|1-hour accumulated Preciptation|%|10|100|green|red
-enspmm-prectot|hourly|Total Accumulated Preciptation|%|10|100|green|red
-enspmm-refc|hourly|Composite Reflectivity|%|10|100|blue|red
+enspmm-prec1h|hourly|1-hour accumulated Preciptation|mm|1|50|green|red
+enspmm-prectot|hourly|Total Accumulated Preciptation|mm|1|200|green|red
+enspmm-refc|hourly|Composite Reflectivity|dBz|5|70|blue|red
 ensprob-lfa-max-thresh5|hourly|Prob. of Frequent Lightning|%|10|100|yellow|red
 ensprob-refc-thresh50|hourly|Prob. of Reflectivity>50 dBz|%|10|100|blue|red
 ensprob-spd10m-thresh40|hourly|Prob. of Winds>40kts|%|10|100|blue|red
@@ -12,14 +12,10 @@ ensprob-uphlcy25-thresh100|hourly|Prob. of Moderate Supercell Threat|%|10|100|bl
 ensprob-uphlcy25-thresh200|hourly|Prob. of High Supercell Threat|%|10|100|blue|red
 DPT_2maboveground|det|Dew Point Temperature|C|-27|45|blue|red
 TMP_2maboveground|det|Temperature|C|-27|45|blue|red
-PRMSL_meansealevel|det|MSLPressure|hPa|980|1040|blue|red
-APCP_surface|det|Total Precipitation|mm|0.0|200|green|red
+APCP_surface|det|Total Precipitation|mm|1|200|green|red
 CAPE_surface|det|CAPE|J/kg|100|5000|blue|red
-HGT_500mb|det|500 hPa Height|m|5580|5880|blue|red
 HLCY_0M3000maboveground|det|0-3 km SRH|m^2/s^2|50|700|blue|red
 PWAT_entireatmosphere|det|Precipitable Water|mm|2.5|70|red|blue
-WDIR_10maboveground|det|10m Wind Direction|degrees|0|360|blue|red
-WDIR_250mb|det|250 hPa Wind Direction|degrees|0|360|blue|red
 WIND_10maboveground|det|10m Wind Speed|knots|5|50|blue|red
 WIND_250mb|det|250 m Wind Speed|knots|20|150|blue|red
 PCP|det|Hourly Precipitation|mm|1|50|green|red
