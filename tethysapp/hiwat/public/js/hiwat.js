@@ -42,6 +42,7 @@ var LIBRARY_OBJECT = (function() {
         sliderInterval,
         styling,
         var_options,
+        gs_wms_url,
         wms_url,
         wms_layer,
         wms_source;
@@ -83,7 +84,7 @@ var LIBRARY_OBJECT = (function() {
         $modalChart = $("#chart-modal");
         $btnGetPlot = $("#btn-get-plot");
         var $meta_element = $("#metadata");
-        wms_url = $meta_element.attr('data-wms-url');
+        gs_wms_url = $meta_element.attr('data-wms-url');
         var_options = $meta_element.attr('data-var-options');
         var_options = JSON.parse(var_options);
         hourly_options = $meta_element.attr('data-hourly-options');
@@ -119,7 +120,7 @@ var LIBRARY_OBJECT = (function() {
         });
 
         wms_source = new ol.source.ImageWMS({
-            url: wms_url,
+            url: gs_wms_url,
             params: {},
             serverType: 'geoserver',
             crossOrigin: 'Anonymous'
@@ -322,22 +323,57 @@ var LIBRARY_OBJECT = (function() {
             observer.observe(target, config);
         }());
 
-        // map.on("singleclick",function(evt){
+        map.on("singleclick",function(evt){
+            $(element).popover('destroy');
+            if ($("#types").find('option:selected').val()=="None"){
+                var clickCoord = evt.coordinate;
+                var view = map.getView();
+                var viewResolution = view.getResolution();
+
+                wms_url = current_layer.getSource().getGetFeatureInfoUrl(evt.coordinate, viewResolution, view.getProjection(), {'INFO_FORMAT': 'application/json'});
+                popup.setPosition(clickCoord);
+                if (wms_url) {
+                    //Retrieving the details for clicked point via the url
+                    $.ajax({
+                        type: "GET",
+                        url: wms_url,
+                        dataType: 'json',
+                        success: function (result) {
+                            var value = parseFloat(result["features"][0]["properties"]["GRAY_INDEX"]);
+                            value = value.toFixed(2);
+                            $(element).popover({
+                                'placement': 'top',
+                                'html': true,
+                                //Dynamically Generating the popup content
+                                'content':'Value: '+value
+                            });
+
+                            $(element).popover('show');
+                            $(element).next().css('cursor', 'text');
+
+
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            console.log(Error);
+                        }
+                    });
+                }
+            }
+
+        });
         //
-        // });
-        //
-        // map.on('pointermove', function(evt) {
-        //     if (evt.dragging) {
-        //         return;
-        //     }
-        //     var pixel = map.getEventPixel(evt.originalEvent);
-        //     var hit = map.forEachLayerAtPixel(pixel, function(layer) {
-        //         if (layer != layers[0] && layer != layers[layers.length - 1] && layer != layers[layers.length - 2] && layer != layers[layers.length - 2]){
-        //             current_layer = layer;
-        //             return true;}
-        //     });
-        //     map.getTargetElement().style.cursor = hit ? 'pointer' : '';
-        // });
+        map.on('pointermove', function(evt) {
+            if (evt.dragging) {
+                return;
+            }
+            var pixel = map.getEventPixel(evt.originalEvent);
+            var hit = map.forEachLayerAtPixel(pixel, function(layer) {
+                if (layer != layers[0] && layer != layers[1] && layer != layers[2]){
+                    current_layer = layer;
+                    return true;}
+            });
+            map.getTargetElement().style.cursor = hit ? 'pointer' : '';
+        });
     };
 
     init_all = function(){
@@ -417,37 +453,54 @@ var LIBRARY_OBJECT = (function() {
         var cv  = document.getElementById('cv'),
             ctx = cv.getContext('2d');
         ctx.clearRect(0,0,cv.width,cv.height);
-
+        // ctx.beginPath();
+        // ctx.fillStyle = 'white';
+        // ctx.fillRect(0,20,20,20);
+        // ctx.fillStyle = 'black';
+        // ctx.fillText(scale[0].toFixed(2),20,8);
         colors.forEach(function(color,i){
-            ctx.beginPath();
+            // ctx.beginPath();
             ctx.fillStyle = color;
-            ctx.fillRect(0,i*20,20,30);
-            ctx.fillText(scale[i].toFixed(2),30,i*20);
+            ctx.fillRect(0,(i+1)*20,20,20);
+            ctx.fillStyle = 'black';
+            ctx.fillText(scale[i].toFixed(2),25,(i+1)*21);
         });
     };
-    get_styling = function(scale,start,end){
+
+    get_styling = function(scale,start,end,index){
         // var start = 'blue';
         // var end = 'red';
         var sld_color_string = '';
 
-        if(scale[scale.length-1] == 0){
-            var colors = chroma.scale([start,start]).mode('lab').correctLightness().colors(20);
-            // var colors2 = chroma.scale([start,start]).classes(20);
-            // console.log(colors2);
-            gen_color_bar(colors,scale);
-            var color_map_entry = '<ColorMapEntry color="'+colors[0]+'" quantity="'+scale[0]+'" label="label1" opacity="'+opacity+'"/>';
-            sld_color_string += color_map_entry;
-        }else{
-            var colors = chroma.scale([start,end]).mode('lab').correctLightness().colors(20);
-
-            // var colors2 = chroma.scale([start,end]).classes(20);
-            // console.log(colors);
+        if ("colors_list" in var_options[index]){
+            // console.log(var_options[index]["colors_list"]);
+            var colors = var_options[index]["colors_list"];
             gen_color_bar(colors,scale);
             colors.forEach(function(color,i){
                 var color_map_entry = '<ColorMapEntry color="'+color+'" quantity="'+scale[i]+'" label="label'+i+'" opacity="'+opacity+'"/>';
                 sld_color_string += color_map_entry;
             });
+        }else{
+            if(scale[scale.length-1] == 0){
+                var colors = chroma.scale([start,start]).mode('lab').correctLightness().colors(20);
+                // var colors2 = chroma.scale([start,start]).classes(20);
+                // console.log(colors2);
+                gen_color_bar(colors,scale);
+                var color_map_entry = '<ColorMapEntry color="'+colors[0]+'" quantity="'+scale[0]+'" label="label1" opacity="'+opacity+'"/>';
+                sld_color_string += color_map_entry;
+            }else{
+                var colors = chroma.scale([start,end]).mode('lab').correctLightness().colors(20);
+
+                // var colors2 = chroma.scale([start,end]).classes(20);
+                // console.log(colors);
+                gen_color_bar(colors,scale);
+                colors.forEach(function(color,i){
+                    var color_map_entry = '<ColorMapEntry color="'+color+'" quantity="'+scale[i]+'" label="label'+i+'" opacity="'+opacity+'"/>';
+                    sld_color_string += color_map_entry;
+                });
+            }
         }
+
 
         return sld_color_string
     };
@@ -476,11 +529,12 @@ var LIBRARY_OBJECT = (function() {
         map.removeLayer(wms_layer);
         var index = find_var_index(var_type,var_options);
         var scale = var_options[index]["scale"];
-        styling = get_styling(scale,var_options[index]["start"],var_options[index]["end"]);
+
+        styling = get_styling(scale,var_options[index]["start"],var_options[index]["end"],index);
         var sld_string = '<StyledLayerDescriptor version="1.0.0"><NamedLayer><Name>'+layer_name+'</Name><UserStyle><FeatureTypeStyle><Rule>\
         <RasterSymbolizer> \
         <ColorMap type="ramp"> \
-        <ColorMapEntry color="#f00" quantity="-9999" label="label0" opacity="0"/>'+
+        <ColorMapEntry color="#f00" quantity="-9999" label="labelnone" opacity="0"/>'+
             styling+'</ColorMap>\
         </RasterSymbolizer>\
         </Rule>\
@@ -490,7 +544,7 @@ var LIBRARY_OBJECT = (function() {
         </StyledLayerDescriptor>';
 
         wms_source = new ol.source.ImageWMS({
-            url: wms_url,
+            url: gs_wms_url,
             params: {'LAYERS':layer_name,'SLD_BODY':sld_string},
             serverType: 'geoserver',
             crossOrigin: 'Anonymous'
@@ -522,7 +576,7 @@ var LIBRARY_OBJECT = (function() {
         var sld_string = '<StyledLayerDescriptor version="1.0.0"><NamedLayer><Name>'+layer_name+'</Name><UserStyle><FeatureTypeStyle><Rule>\
         <RasterSymbolizer> \
         <ColorMap type="ramp"> \
-        <ColorMapEntry color="#f00" quantity="-9999" label="label0" opacity="0"/>'+
+        <ColorMapEntry color="#f00" quantity="-9999" label="labelnone" opacity="0"/>'+
             styling+'</ColorMap>\
         </RasterSymbolizer>\
         </Rule>\
@@ -582,7 +636,7 @@ var LIBRARY_OBJECT = (function() {
                     xAxis: {
                         type: 'datetime',
                         labels: {
-                            format: '{value:%d %b %Y}'
+                            format: '{value:Day %d-%H:%M}'
                             // rotation: 45,
                             // align: 'left'
                         },
@@ -722,20 +776,6 @@ var LIBRARY_OBJECT = (function() {
             opacity = ui.value;
             $("#opacity").text(opacity);
             wms_layer.setOpacity(opacity);
-            // var interval_type = ($("#interval_table option:selected").val());
-            // var variable = ($("#var_table option:selected").val());
-            // var index = find_var_index(variable,var_options);
-            // var scale = var_options[index]["scale"];
-            // styling = get_styling(scale,var_options[index]["start"],var_options[index]["end"]);
-            // var slider_val = $slider.slider("value");
-            // if(interval_type == 'det'){
-            //     $( "#slider-text" ).text(det_options[slider_val][1]); //Get the value from the slider
-            //     update_wms(variable,slider_val,interval_type);
-            // }else if(interval_type == 'hourly'){
-            //     $( "#slider-text" ).text(hourly_options[slider_val][1]);
-            //     update_wms(variable,slider_val,interval_type);
-            // }
-
         });
 
 

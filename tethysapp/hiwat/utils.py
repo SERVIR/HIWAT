@@ -13,6 +13,26 @@ from netCDF4 import Dataset
 from config import *
 import numpy as np
 import shapely.geometry
+import webcolors
+import cPickle
+
+cf = open(COLORS_PICKLE,'rb')
+cPick = cPickle.load(cf)
+cf.close()
+
+cl1 = [[0.0000, 0.9255, 0.9255],[0.0039, 0.6275, 0.9647],[0.0000, 0.0000, 0.9647],[0.0000, 1.0000, 0.0000],[0.0000, 0.7843, 0.0000],[0.0000, 0.5647, 0.0000],[1.0000, 1.0000, 0.0000],[0.9059, 0.7529, 0.0000],[1.0000, 0.5647, 0.0000],[1.0000, 0.0000, 0.0000],[0.8392, 0.0000, 0.0000],[0.7529, 0.0000, 0.0000],[1.0000, 0.0000, 1.0000],[0.6000, 0.3333, 0.7882]]
+
+c = {}
+for color in cPick:
+    hex = webcolors.rgb_to_hex((int(cPick[color][0]*255),int(cPick[color][1]*255),int(cPick[color][2]*255)))
+    c[color] = hex
+
+i = 1
+for color in cl1:
+    hex = webcolors.rgb_to_hex((int(color[0] * 255), int(color[1] * 255), int(color[2] * 255)))
+    keygen = str(i)
+    c[keygen] = hex
+    i+=1
 
 def get_pt_values(s_var,geom_data,interval):
 
@@ -171,6 +191,7 @@ def get_poylgon_values(s_var, geom_data, interval):
 def generate_variables_meta():
     db_file = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'public/data/var_info.txt')
     variable_list = []
+    var_issues = []
     with open(db_file, mode='r') as f:
         f.readline()  # Skip first line
 
@@ -188,27 +209,129 @@ def generate_variables_meta():
             vmax = linevals[5]
             start = linevals[6]
             end = linevals[7]
-            scale = calc_color_range(float(vmin),float(vmax))
-            variable_list.append({
-                'id': variable_id,
-                'category':category,
-                'display_name': display_name,
-                'units': units,
-                'min':vmin,
-                'max':vmax,
-                'start':start,
-                'end':end,
-                'scale':scale
-            })
 
+            try:
+                print variable_id.lower()
+                colors_list = retrieve_colors(str(variable_id).lower())
+                scale = calc_color_range(float(vmin), float(vmax),len(colors_list))
+                variable_list.append({
+                    'id': variable_id,
+                    'category': category,
+                    'display_name': display_name,
+                    'units': units,
+                    'min': vmin,
+                    'max': vmax,
+                    'start': start,
+                    'end': end,
+                    'scale': scale,
+                    'colors_list':colors_list
+                })
+            except Exception as e:
+                print variable_id,e
+                var_issues.append(variable_id)
+                scale = calc_color_range(float(vmin), float(vmax), 20)
+                variable_list.append({
+                    'id': variable_id,
+                    'category': category,
+                    'display_name': display_name,
+                    'units': units,
+                    'min': vmin,
+                    'max': vmax,
+                    'start': start,
+                    'end': end,
+                    'scale': scale
+                })
+                continue
+
+
+    print var_issues
     return variable_list
 
-def calc_color_range(min,max):
 
-    interval = float(abs((max - min) / 20))
+def retrieve_colors(field):
+    fillcols = None
+
+    if ('tmp_2m' in field):
+        clevs = [-27, -24, -21, -18, -15, -12, -9, -6, -3, 0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42]
+        fillcols = [c['57'], c['55'], c['53'], c['51'], c['49'], c['47'], c['45'], c['43'], c['41'], c['39'],
+                    c['37'], c['35'], c['33'], c['31'], c['22'], c['23'], c['25'], c['27'], c['29'], c['62'],
+                    c['63'], c['65'], c['67'], c['69'], c['75'], c['77'], c['79']]
+        below = c['59']
+        above = c['79']
+    elif ('dpt_2m' in field):
+        clevs = [-27, -24, -21, -18, -15, -12, -9, -6, -3, 0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30]
+        fillcols = [c['57'], c['55'], c['53'], c['51'], c['49'], c['47'], c['45'], c['43'], c['41'], c['39'],
+                    c['37'], c['35'], c['33'], c['31'], c['22'], c['23'], c['25'], c['27'], c['29'], c['62']]
+        below = c['59']
+        above = c['62']
+    elif ('sbcape' in field):
+        clevs = [100, 250, 500, 750, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 6000, 7000]
+        fillcols = [c['52'], c['55'], c['49'], c['46'], c['43'], c['38'], c['36'], c['34'], c['22'], c['23'],
+                    c['24'], c['25'], c['26'], c['27'], c['29']]
+        below = 'white'
+        above = c['29']
+    elif ('spd10m' in field):
+        clevs = [20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75]
+        fillcols = [c['2'], c['3'], c['4'], c['5'], c['6'], c['7'], c['8'], c['9'], c['10'], c['11'], c['12'], c['13']]
+        below = 'white'
+        above = 'magenta'
+    elif ('refc' in field):
+        clevs = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70]
+        fillcols = [c['1'], c['2'], c['3'], c['4'], c['5'], c['6'], c['7'], c['8'], c['9'], c['10'], c['11'], c['12'], c['13'], c['14']]
+        below = 'white'
+        above = 'purple'
+        # Use colors/contour intervals consistent with grads plots for deterministic runs.
+    elif ('prec1h' in field or 'prec3h' in field or 'prec6h' in field ):
+        clevs = [1, 2, 5, 10, 15, 20, 25, 50, 75, 100, 125, 150]
+        fillcols = [c['33'], c['35'], c['37'], c['39'], c['43'], c['45'], c['47'], c['49'], c['53'], c['55'],
+                    c['57'], c['59']]
+        below = 'white'
+        above = 'purple'
+    elif ('prec12h' in field or 'prec24h' in field or 'prectot' in field):
+        clevs = [1, 2, 5, 10, 15, 20, 25, 50, 75, 100, 125, 150, 200, 250, 300]
+        fillcols = [c['33'], c['35'], c['37'], c['39'], c['43'], c['45'], c['47'], c['49'], c['53'], c['55'],
+                    c['57'], c['59'], c['65'], c['67'], c['69']]
+        below = 'white'
+        above = 'purple'
+    elif ('tcolg' in field):
+        clevs = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70]
+        fillcols = [c['1'], c['2'], c['3'], c['4'], c['5'], c['6'], c['7'], c['8'], c['9'], c['10'], c['11'], c['12'], c['13'], c['14']]
+        below = 'white'
+        above = 'purple'
+    elif ('lfa' in field):
+        #      clevs = [0.07,0.5,1,2,3,4,5,6,7,8,9,10,12,14]
+        clevs = [0.1, 0.5, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14]
+        fillcols = [c['1'], c['2'], c['3'], c['4'], c['5'], c['6'], c['7'], c['8'], c['9'], c['10'], c['11'], c['12'], c['13'], c['14']]
+        below = 'white'
+        above = 'purple'
+    elif (('uphlcy16' in field) or ('uphlcy25' in field)):
+        clevs = [50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700]
+        fillcols = [c['1'], c['2'], c['3'], c['4'], c['5'], c['6'], c['7'], c['8'], c['9'], c['10'], c['11'], c['12'], c['13'], c['14']]
+        below = 'white'
+        above = 'purple'
+    elif('apcp' in field):
+        fillcols = [c['33'],c['35'],c['37'],c['39'], c['43'],c['45'], c['47'], c['49'],c['53'],c['55'],c['57'],c['59'],c['65'],c['67'],c['69']]
+    elif('cape' in field):
+        fillcols = [c['52'], c['55'], c['49'], c['46'], c['43'], c['38'], c['36'], c['34'], c['22'], c['23'], c['24'],
+                    c['25'], c['26'], c['27'], c['29']]
+    # print webcolors.rgb_to_hex((int(c['57'][0]*255),int(c['57'][1]*255),int(c['57'][2]*255)))
+
+    # color_str = ','.join(map(str, fillcols))
+    # print color_str
+    return fillcols
+
+def calc_color_range(min,max,classes):
+    # breaks = None
+
+    if classes is not None:
+        breaks = int(classes)
+    else:
+        breaks = int(20)
+
+    interval = float(abs((max - min) / breaks))
 
     if interval == 0:
-        scale = [0] * 20
+        scale = [0] * breaks
     else:
         scale = np.arange(min, max, interval).tolist()
 

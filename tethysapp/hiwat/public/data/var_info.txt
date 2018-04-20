@@ -2,6 +2,7 @@ Var|Category|Display_name|units|min|max|start|end
 enspmm-prec1h|hourly|1-hour accumulated Preciptation|mm|1|50|green|red
 enspmm-prectot|hourly|Total Accumulated Preciptation|mm|1|200|green|red
 enspmm-refc|hourly|Composite Reflectivity|dBz|5|70|blue|red
+ensprob-lfa-max-thresh0.07|hourly|Prob. of Lightning|%|10|100|yellow|red
 ensprob-lfa-max-thresh5|hourly|Prob. of Frequent Lightning|%|10|100|yellow|red
 ensprob-refc-thresh50|hourly|Prob. of Reflectivity>50 dBz|%|10|100|blue|red
 ensprob-spd10m-thresh40|hourly|Prob. of Winds>40kts|%|10|100|blue|red

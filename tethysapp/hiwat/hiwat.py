@@ -7,6 +7,7 @@ import numpy as np
 from itertools import groupby
 import tempfile, shutil,sys
 import calendar
+import cPickle
 from utils import *
 from netCDF4 import Dataset
 import netCDF4
@@ -14,10 +15,10 @@ import gdal
 import osr
 import ogr
 import requests
-import rasterio
 import random
 from collections import defaultdict
 from config import HIWAT_DET,ROOT_OUTPUT_DIR,HIWAT_DAY1,HIWAT_DAY2,HIWAT_HOURLY
+import webcolors
 
 def extractRasters(filename,suffix):
 
@@ -84,13 +85,13 @@ def extractHourlyRasters(filename,suffix):
             lat = lis_var['latitude'][:]
             lon = lis_var['longitude'][:]
             time = lis_var['time'][:]
-            xmin, ymin, xmax, ymax = [lon.min(), lat.min(), lon.max(), lat.max()]
-            nrows, ncols = np.shape(data)
-            xres = (xmax - xmin) / float(ncols)
-            yres = (ymax - ymin) / float(nrows)
-            geotransform = (xmin, xres, 0, ymax, 0, -yres)
-            print(geotransform,GeoT)
-            print(lat,lon)
+            # xmin, ymin, xmax, ymax = [lon.min(), lat.min(), lon.max(), lat.max()]
+            # nrows, ncols = np.shape(data)
+            # xres = (xmax - xmin) / float(ncols)
+            # yres = (ymax - ymin) / float(nrows)
+            # geotransform = (xmin, xres, 0, ymax, 0, -yres)
+            # print(geotransform,GeoT)
+            # print(lat,lon)
             for timestep, v in enumerate(time):
 
                 data = lis_var[var][timestep,:,:]
@@ -131,6 +132,7 @@ def extractDailyRasters(filename,suffix):
             data = lis_var[var][0,:,:]
             data = data[::-1, :]
             dt_str = suffix
+
             f_name = var + '-' + dt_str + '.tif'
             print f_name
             driver = gdal.GetDriverByName('GTiff')
@@ -158,7 +160,6 @@ def get_netcdf_info(filename,var_name):
     if nc_file.GetSubDatasets() > 1:
         subdataset = 'NETCDF:"'+filename+'":'+var_name #Specifying the subset name
         src_ds_sd = gdal.Open(subdataset) #Reading the subset
-        print src_ds_sd
         NDV = src_ds_sd.GetRasterBand(1).GetNoDataValue() #Get the nodatavalues
         xsize = src_ds_sd.RasterXSize #Get the X size
         ysize = src_ds_sd.RasterYSize #Get the Y size
@@ -229,10 +230,11 @@ def upload_tiff(dir,geoserver_rest_url,workspace,uname,pwd):
             sys.exit()
         if file.endswith('.tif'):
             data = open(os.path.join(dir,file),'rb').read() #Read the file
-            store_name = str(file.split('.')[0]) #Creating the store name dynamically
+
+            store_name = str(file[:-4]) #Creating the store name dynamically
             print(store_name)
             request_url = '{0}workspaces/{1}/coveragestores/{2}/file.geotiff'.format(geoserver_rest_url,workspace,store_name) #Creating the rest url
-            # print(request_url)
+            # # print(request_url)
             requests.put(request_url,verify=False,headers=headers,data=data,auth=(uname,pwd)) #Creating the resource on the geoserver
 
 def det_time_options(filename, suffix):
@@ -275,6 +277,9 @@ def hourly_time_options(filename, suffix):
 
     return date_options
 
+
+
+# retrieve_colors('tmp2m')
 # hourly_time_options(HIWAT_HOURLY,'hourly')
 # extractRasters(HIWAT_DET,'det')
 # extractHourlyRasters(HIWAT_HOURLY,'hourly')
@@ -282,4 +287,4 @@ def hourly_time_options(filename, suffix):
 # extractDailyRasters(HIWAT_DAY2,'day2')
 # extractRasters(HIWAT_DAY2,'day2')
 #update_var_info_file()
-# upload_tiff('/media/sf_Downloads/hiwat_data/day2/','https://tethysdev.servirglobal.net/geoserver/rest/','hiwatday2','admin','Tethys2018')
+# upload_tiff('/media/sf_Downloads/hiwat_data/hourly/','https://tethysdev.servirglobal.net/geoserver/rest/','hiwathourly','admin','Tethys2018')

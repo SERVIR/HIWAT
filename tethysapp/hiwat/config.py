@@ -17,3 +17,5 @@ HIWAT_DAY1 = '/media/sf_Downloads/wrf_hkh_nc/hkhEnsemble_20180329-1800_day1_latl
 HIWAT_DAY2 = '/media/sf_Downloads/wrf_hkh_nc/hkhEnsemble_20180329-1800_day2_latlon.nc'
 
 ROOT_OUTPUT_DIR = '/media/sf_Downloads/hiwat_data/'
+
+COLORS_PICKLE = '/media/sf_Downloads/wrf_hkh_nc/gradscolors.pkl'

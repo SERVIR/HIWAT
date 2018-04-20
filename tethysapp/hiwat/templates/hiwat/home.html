@@ -38,9 +38,9 @@
 </label>
 <select  class="interval_table" name="interval_table" id="interval_table" style="width: 100%">
     <option value="det">Deterministic</option>
-    <option value="hourly">Hourly</option>
-    <option value="day1">Day 1</option>
-    <option value="day2">Day 2</option>
+    <option value="hourly">Ensemble Hourly</option>
+    <option value="day1">Ensemble Day 1</option>
+    <option value="day2">Ensemble Day 2</option>
 </select>
 <br><br>
 <label>
@@ -68,7 +68,7 @@
 <br>
 <div class="error"></div>
 <b>Legend</b>
-<div align="right"><canvas id="cv" width="200px" height="700px"></canvas></div>
+<div align="right"><canvas id="cv" width="200px" height="650px"></canvas></div>
 <div id="metadata" style="display: none" data-var-options="{{var_options}}" data-hourly-options="{{hourly_options}}" data-det-options="{{det_options}}"  data-wms-url="{{geoserver_wms_url}}"></div>
 <input type="text" name="point-lat-lon" id="point-lat-lon" hidden>
 <input type="text" name="poly-lat-lon" id="poly-lat-lon" hidden>
