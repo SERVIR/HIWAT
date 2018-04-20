@@ -95,18 +95,21 @@ var LIBRARY_OBJECT = (function() {
     };
 
     init_dropdown = function () {
-        $(".interval_table").select2();
-        $(".var_table").select2();
+        $(".interval_table").select2({minimumResultsForSearch: -1});
+        $(".var_table").select2({minimumResultsForSearch: -1});
 
     };
 
     init_map = function() {
         var projection = ol.proj.get('EPSG:3857');
+        // var baseLayer = new ol.layer.Tile({
+        //     source: new ol.source.BingMaps({
+        //         key: '5TC0yID7CYaqv3nVQLKe~xWVt4aXWMJq2Ed72cO4xsA~ApdeyQwHyH_btMjQS1NJ7OHKY8BK-W-EMQMrIavoQUMYXeZIQOUURnKGBOC7UCt4',
+        //         imagerySet: 'AerialWithLabels' // Options 'Aerial', 'AerialWithLabels', 'Road'
+        //     })
+        // });
         var baseLayer = new ol.layer.Tile({
-            source: new ol.source.BingMaps({
-                key: '5TC0yID7CYaqv3nVQLKe~xWVt4aXWMJq2Ed72cO4xsA~ApdeyQwHyH_btMjQS1NJ7OHKY8BK-W-EMQMrIavoQUMYXeZIQOUURnKGBOC7UCt4',
-                imagerySet: 'AerialWithLabels' // Options 'Aerial', 'AerialWithLabels', 'Road'
-            })
+            source: new ol.source.OSM()
         });
         var fullScreenControl = new ol.control.FullScreen();
         var view = new ol.View({
@@ -477,7 +480,12 @@ var LIBRARY_OBJECT = (function() {
             var colors = var_options[index]["colors_list"];
             gen_color_bar(colors,scale);
             colors.forEach(function(color,i){
-                var color_map_entry = '<ColorMapEntry color="'+color+'" quantity="'+scale[i]+'" label="label'+i+'" opacity="'+opacity+'"/>';
+                if(i==0){
+                    var color_map_entry = '<ColorMapEntry color="#f00" quantity="'+scale[i]+'" label="label'+i+'" opacity="0"/>';
+                }else{
+                    var color_map_entry = '<ColorMapEntry color="'+color+'" quantity="'+scale[i]+'" label="label'+i+'" opacity="'+opacity+'"/>';
+                }
+
                 sld_color_string += color_map_entry;
             });
         }else{
@@ -486,7 +494,11 @@ var LIBRARY_OBJECT = (function() {
                 // var colors2 = chroma.scale([start,start]).classes(20);
                 // console.log(colors2);
                 gen_color_bar(colors,scale);
-                var color_map_entry = '<ColorMapEntry color="'+colors[0]+'" quantity="'+scale[0]+'" label="label1" opacity="'+opacity+'"/>';
+                if(i==0){
+                    var color_map_entry = '<ColorMapEntry color="#f00" quantity="'+scale[i]+'" label="label'+i+'" opacity="0"/>';
+                }else{
+                    var color_map_entry = '<ColorMapEntry color="'+color+'" quantity="'+scale[i]+'" label="label'+i+'" opacity="'+opacity+'"/>';
+                }
                 sld_color_string += color_map_entry;
             }else{
                 var colors = chroma.scale([start,end]).mode('lab').correctLightness().colors(20);
@@ -495,7 +507,11 @@ var LIBRARY_OBJECT = (function() {
                 // console.log(colors);
                 gen_color_bar(colors,scale);
                 colors.forEach(function(color,i){
-                    var color_map_entry = '<ColorMapEntry color="'+color+'" quantity="'+scale[i]+'" label="label'+i+'" opacity="'+opacity+'"/>';
+                    if(i==0){
+                        var color_map_entry = '<ColorMapEntry color="#f00" quantity="'+scale[i]+'" label="label'+i+'" opacity="0"/>';
+                    }else{
+                        var color_map_entry = '<ColorMapEntry color="'+color+'" quantity="'+scale[i]+'" label="label'+i+'" opacity="'+opacity+'"/>';
+                    }
                     sld_color_string += color_map_entry;
                 });
             }

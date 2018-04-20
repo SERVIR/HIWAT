@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b711ed3c-1832-4001-ad20-9ce133638d10" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/tethysapp/hiwat/config.py" afterPath="$PROJECT_DIR$/tethysapp/hiwat/config.py" />
-      <change beforePath="$PROJECT_DIR$/tethysapp/hiwat/hiwat.py" afterPath="$PROJECT_DIR$/tethysapp/hiwat/hiwat.py" />
-      <change beforePath="$PROJECT_DIR$/tethysapp/hiwat/public/data/var_info.txt" afterPath="$PROJECT_DIR$/tethysapp/hiwat/public/data/var_info.txt" />
       <change beforePath="$PROJECT_DIR$/tethysapp/hiwat/public/js/hiwat.js" afterPath="$PROJECT_DIR$/tethysapp/hiwat/public/js/hiwat.js" />
-      <change beforePath="$PROJECT_DIR$/tethysapp/hiwat/templates/hiwat/home.html" afterPath="$PROJECT_DIR$/tethysapp/hiwat/templates/hiwat/home.html" />
-      <change beforePath="$PROJECT_DIR$/tethysapp/hiwat/utils.py" afterPath="$PROJECT_DIR$/tethysapp/hiwat/utils.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,11 +26,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="hiwat.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="hiwat.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/hiwat.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1684">
-              <caret line="136" column="17" lean-forward="false" selection-start-line="136" selection-start-column="17" selection-end-line="136" selection-end-column="24" />
+            <state relative-caret-position="944">
+              <caret line="282" column="44" lean-forward="true" selection-start-line="282" selection-start-column="44" selection-end-line="282" selection-end-column="44" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -46,8 +41,8 @@
       <file leaf-file-name="var_info.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/public/data/var_info.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="16" column="35" lean-forward="false" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
+            <state relative-caret-position="18">
+              <caret line="1" column="70" lean-forward="false" selection-start-line="1" selection-start-column="67" selection-end-line="1" selection-end-column="70" />
               <folding />
             </state>
           </provider>
@@ -68,7 +63,7 @@
       <file leaf-file-name="utils.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="710">
+            <state relative-caret-position="980">
               <caret line="313" column="26" lean-forward="true" selection-start-line="313" selection-start-column="26" selection-end-line="313" selection-end-column="26" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
@@ -111,26 +106,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="hiwat.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="hiwat.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/public/js/hiwat.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1097">
-              <caret line="663" column="65" lean-forward="false" selection-start-line="663" selection-start-column="65" selection-end-line="663" selection-end-column="65" />
+            <state relative-caret-position="-11602">
+              <caret line="99" column="0" lean-forward="true" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
               <folding>
-                <marker date="1524231227417" expanded="true" signature="18535:18946" ph="..." />
-                <marker date="1524231227417" expanded="true" signature="18547:18912" ph="..." />
-                <marker date="1524231227417" expanded="true" signature="18585:18889" ph="..." />
-                <marker date="1524231227417" expanded="true" signature="18603:18867" ph="..." />
-                <marker date="1524231227417" expanded="true" signature="18609:18838" ph="..." />
-                <marker date="1524231227417" expanded="true" signature="18637:18821" ph="..." />
-                <marker date="1524231227417" expanded="true" signature="18670:18792" ph="..." />
-                <marker date="1524231227417" expanded="true" signature="20049:20460" ph="..." />
-                <marker date="1524231227417" expanded="true" signature="20061:20426" ph="..." />
-                <marker date="1524231227417" expanded="true" signature="20099:20403" ph="..." />
-                <marker date="1524231227417" expanded="true" signature="20117:20381" ph="..." />
-                <marker date="1524231227417" expanded="true" signature="20123:20352" ph="..." />
-                <marker date="1524231227417" expanded="true" signature="20151:20335" ph="..." />
-                <marker date="1524231227417" expanded="true" signature="20184:20306" ph="..." />
+                <marker date="1524244485328" expanded="true" signature="19327:19738" ph="..." />
+                <marker date="1524244485328" expanded="true" signature="19339:19704" ph="..." />
+                <marker date="1524244485328" expanded="true" signature="19377:19681" ph="..." />
+                <marker date="1524244485328" expanded="true" signature="19395:19659" ph="..." />
+                <marker date="1524244485328" expanded="true" signature="19401:19630" ph="..." />
+                <marker date="1524244485328" expanded="true" signature="19429:19613" ph="..." />
+                <marker date="1524244485328" expanded="true" signature="19462:19584" ph="..." />
+                <marker date="1524244485328" expanded="true" signature="20841:21252" ph="..." />
+                <marker date="1524244485328" expanded="true" signature="20853:21218" ph="..." />
+                <marker date="1524244485328" expanded="true" signature="20891:21195" ph="..." />
+                <marker date="1524244485328" expanded="true" signature="20909:21173" ph="..." />
+                <marker date="1524244485328" expanded="true" signature="20915:21144" ph="..." />
+                <marker date="1524244485328" expanded="true" signature="20943:21127" ph="..." />
+                <marker date="1524244485328" expanded="true" signature="20976:21098" ph="..." />
               </folding>
             </state>
           </provider>
@@ -172,9 +167,9 @@
         <option value="$PROJECT_DIR$/tethysapp/hiwat/config.py" />
         <option value="$PROJECT_DIR$/tethysapp/hiwat/hiwat.py" />
         <option value="$PROJECT_DIR$/tethysapp/hiwat/templates/hiwat/home.html" />
-        <option value="$PROJECT_DIR$/tethysapp/hiwat/public/js/hiwat.js" />
         <option value="$PROJECT_DIR$/tethysapp/hiwat/utils.py" />
         <option value="$PROJECT_DIR$/tethysapp/hiwat/public/data/var_info.txt" />
+        <option value="$PROJECT_DIR$/tethysapp/hiwat/public/js/hiwat.js" />
       </list>
     </option>
   </component>
@@ -394,20 +389,20 @@
         <state relative-caret-position="5814">
           <caret line="329" column="42" lean-forward="true" selection-start-line="329" selection-start-column="42" selection-end-line="329" selection-end-column="42" />
           <folding>
-            <marker date="1524231227417" expanded="true" signature="18535:18946" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="18547:18912" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="18585:18889" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="18603:18867" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="18609:18838" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="18637:18821" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="18670:18792" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="20049:20460" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="20061:20426" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="20099:20403" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="20117:20381" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="20123:20352" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="20151:20335" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="20184:20306" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="19327:19738" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="19339:19704" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="19377:19681" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="19395:19659" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="19401:19630" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="19429:19613" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="19462:19584" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="20841:21252" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="20853:21218" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="20891:21195" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="20909:21173" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="20915:21144" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="20943:21127" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="20976:21098" ph="..." />
           </folding>
         </state>
       </provider>
@@ -504,20 +499,20 @@
         <state relative-caret-position="5814">
           <caret line="329" column="42" lean-forward="true" selection-start-line="329" selection-start-column="42" selection-end-line="329" selection-end-column="42" />
           <folding>
-            <marker date="1524231227417" expanded="true" signature="18535:18946" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="18547:18912" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="18585:18889" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="18603:18867" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="18609:18838" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="18637:18821" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="18670:18792" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="20049:20460" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="20061:20426" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="20099:20403" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="20117:20381" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="20123:20352" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="20151:20335" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="20184:20306" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="19327:19738" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="19339:19704" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="19377:19681" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="19395:19659" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="19401:19630" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="19429:19613" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="19462:19584" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="20841:21252" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="20853:21218" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="20891:21195" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="20909:21173" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="20915:21144" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="20943:21127" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="20976:21098" ph="..." />
           </folding>
         </state>
       </provider>
@@ -596,20 +591,20 @@
         <state relative-caret-position="5868">
           <caret line="332" column="37" lean-forward="true" selection-start-line="332" selection-start-column="37" selection-end-line="332" selection-end-column="37" />
           <folding>
-            <marker date="1524231227417" expanded="true" signature="18535:18946" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="18547:18912" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="18585:18889" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="18603:18867" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="18609:18838" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="18637:18821" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="18670:18792" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="20049:20460" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="20061:20426" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="20099:20403" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="20117:20381" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="20123:20352" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="20151:20335" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="20184:20306" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="19327:19738" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="19339:19704" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="19377:19681" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="19395:19659" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="19401:19630" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="19429:19613" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="19462:19584" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="20841:21252" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="20853:21218" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="20891:21195" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="20909:21173" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="20915:21144" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="20943:21127" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="20976:21098" ph="..." />
           </folding>
         </state>
       </provider>
@@ -698,20 +693,20 @@
         <state relative-caret-position="5832">
           <caret line="324" column="35" lean-forward="true" selection-start-line="324" selection-start-column="35" selection-end-line="324" selection-end-column="35" />
           <folding>
-            <marker date="1524231227417" expanded="true" signature="18535:18946" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="18547:18912" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="18585:18889" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="18603:18867" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="18609:18838" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="18637:18821" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="18670:18792" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="20049:20460" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="20061:20426" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="20099:20403" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="20117:20381" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="20123:20352" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="20151:20335" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="20184:20306" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="19327:19738" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="19339:19704" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="19377:19681" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="19395:19659" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="19401:19630" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="19429:19613" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="19462:19584" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="20841:21252" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="20853:21218" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="20891:21195" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="20909:21173" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="20915:21144" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="20943:21127" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="20976:21098" ph="..." />
           </folding>
         </state>
       </provider>
@@ -758,29 +753,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/plots.py" />
-    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/public/js/hiwat.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1097">
-          <caret line="663" column="65" lean-forward="false" selection-start-line="663" selection-start-column="65" selection-end-line="663" selection-end-column="65" />
-          <folding>
-            <marker date="1524231227417" expanded="true" signature="18535:18946" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="18547:18912" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="18585:18889" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="18603:18867" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="18609:18838" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="18637:18821" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="18670:18792" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="20049:20460" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="20061:20426" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="20099:20403" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="20117:20381" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="20123:20352" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="20151:20335" ph="..." />
-            <marker date="1524231227417" expanded="true" signature="20184:20306" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/controllers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -819,9 +791,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/public/data/var_info.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="70" lean-forward="false" selection-start-line="1" selection-start-column="67" selection-end-line="1" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/hiwat.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="944">
+          <caret line="282" column="44" lean-forward="true" selection-start-line="282" selection-start-column="44" selection-end-line="282" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="710">
+        <state relative-caret-position="980">
           <caret line="313" column="26" lean-forward="true" selection-start-line="313" selection-start-column="26" selection-end-line="313" selection-end-column="26" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
@@ -829,20 +819,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/public/data/var_info.txt">
+    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/public/js/hiwat.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="35" lean-forward="false" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/hiwat.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1684">
-          <caret line="136" column="17" lean-forward="false" selection-start-line="136" selection-start-column="17" selection-end-line="136" selection-end-column="24" />
+        <state relative-caret-position="-11602">
+          <caret line="99" column="0" lean-forward="true" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
           <folding>
-            <element signature="e#0#15#0" expanded="true" />
+            <marker date="1524244485328" expanded="true" signature="19327:19738" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="19339:19704" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="19377:19681" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="19395:19659" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="19401:19630" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="19429:19613" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="19462:19584" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="20841:21252" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="20853:21218" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="20891:21195" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="20909:21173" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="20915:21144" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="20943:21127" ph="..." />
+            <marker date="1524244485328" expanded="true" signature="20976:21098" ph="..." />
           </folding>
         </state>
       </provider>
