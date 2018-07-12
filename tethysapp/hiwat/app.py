@@ -26,8 +26,13 @@ class Hiwat(TethysAppBase):
         url_maps = (
             UrlMap(
                 name='home',
-                url='hiwat',
+                url='hiwat/test',
                 controller='hiwat.controllers.home'
+            ),
+            UrlMap(
+                name='leaf',
+                url='hiwat',
+                controller='hiwat.controllers.leaf'
             ),
             UrlMap(
                 name='get-ts',

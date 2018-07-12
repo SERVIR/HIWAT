@@ -1,6 +1,6 @@
 /*****************************************************************************
  * FILE:    HIWAT MAIN JS
- * DATE:    8 MARCH 2018
+ * DATE:    9 JULY 2018
  * AUTHOR: Sarva Pulla
  * COPYRIGHT: (c) NASA SERVIR 2018
  * LICENSE: BSD 2-Clause
@@ -25,6 +25,7 @@ var LIBRARY_OBJECT = (function() {
         det_options,
         element,
         hourly_options,
+        int_type,
         layers,
         map,
         $modalUpload,
@@ -42,6 +43,8 @@ var LIBRARY_OBJECT = (function() {
         slider_max,
         sliderInterval,
         styling,
+        tdWmsLayer,
+        thredds_urls,
         var_options,
         gs_wms_url,
         wms_url,
@@ -92,6 +95,8 @@ var LIBRARY_OBJECT = (function() {
         hourly_options = JSON.parse(hourly_options);
         det_options = $meta_element.attr('data-det-options');
         det_options = JSON.parse(det_options);
+        thredds_urls = $meta_element.attr('data-thredds-urls');
+        thredds_urls = JSON.parse(thredds_urls);
 
     };
 
@@ -102,282 +107,117 @@ var LIBRARY_OBJECT = (function() {
     };
 
     init_map = function() {
-        var projection = ol.proj.get('EPSG:3857');
-        // var baseLayer = new ol.layer.Tile({
-        //     source: new ol.source.BingMaps({
-        //         key: '5TC0yID7CYaqv3nVQLKe~xWVt4aXWMJq2Ed72cO4xsA~ApdeyQwHyH_btMjQS1NJ7OHKY8BK-W-EMQMrIavoQUMYXeZIQOUURnKGBOC7UCt4',
-        //         imagerySet: 'AerialWithLabels' // Options 'Aerial', 'AerialWithLabels', 'Road'
-        //     })
-        // });
-        var baseLayer = new ol.layer.Tile({
-            source: new ol.source.OSM()
-        });
-        var fullScreenControl = new ol.control.FullScreen();
-        var view = new ol.View({
-            center: ol.proj.transform([84,28], 'EPSG:4326','EPSG:3857'),
-            projection: projection,
-            zoom: 6
-        });
-        shp_source = new ol.source.Vector();
-        shp_layer = new ol.layer.Vector({
-            source: shp_source
-        });
+        map = L.map('map',{
+            // timeDimension: true,
+            // timeDimensionControl: true
+        }).setView([28.39, 84.12], 5);
 
-        wms_source = new ol.source.TileWMS({
-            url: gs_wms_url,
-            params: {},
-            serverType: 'geoserver',
-            crossOrigin: 'Anonymous'
-        });
+        var timeDimension = new L.TimeDimension();
+        map.timeDimension = timeDimension;
 
-        wms_layer = new ol.layer.Tile({
-            name: 'wms_layer',
-            source: wms_source
-        });
+        var player        = new L.TimeDimension.Player({
+            loop: true,
+            startOver:true
+        }, timeDimension);
 
-        var vector_source = new ol.source.Vector({
-            wrapX: false
-        });
-
-        var vector_layer = new ol.layer.Vector({
-            name: 'my_vectorlayer',
-            source: vector_source,
-            style: new ol.style.Style({
-                fill: new ol.style.Fill({
-                    color: 'rgba(255, 255, 255, 0.2)'
-                }),
-                stroke: new ol.style.Stroke({
-                    color: '#ffcc33',
-                    width: 2
-                }),
-                image: new ol.style.Circle({
-                    radius: 7,
-                    fill: new ol.style.Fill({
-                        color: '#ffcc33'
-                    })
-                })
-            })
-        });
-
-
-        layers = [baseLayer,vector_layer,shp_layer,wms_layer];
-
-        map = new ol.Map({
-            target: document.getElementById("map"),
-            layers: layers,
-            view: view
-        });
-
-        map.crossOrigin = 'anonymous';
-        element = document.getElementById('popup');
-
-        popup = new ol.Overlay({
-            element: element,
-            positioning: 'bottom-center',
-            stopEvent: true
-        });
-
-        map.addOverlay(popup);
-
-        var mousePositionControl = new ol.control.MousePosition({
-            coordinateFormat: ol.coordinate.createStringXY(4),
-            projection: 'EPSG:4326',
-            className: 'custom-mouse-position',
-            target: document.getElementById('mouse-position'),
-            undefinedHTML: '&nbsp;'
-        });
-
-        map.addControl(mousePositionControl);
-
-        //Code for adding interaction for drawing on the map
-        var lastFeature, draw, featureType;
-
-        //Clear the last feature before adding a new feature to the map
-        var removeLastFeature = function () {
-            if (lastFeature) vector_source.removeFeature(lastFeature);
+        var timeDimensionControlOptions = {
+            player:        player,
+            timeDimension: timeDimension,
+            position:      'bottomleft',
+            autoPlay:      false,
+            minSpeed:      1,
+            speedStep:     0.5,
+            maxSpeed:      4,
+            timeSliderDragUpdate: true,
+            loopButton:true,
+            limitSliders:true
         };
 
-        //Add interaction to the map based on the selected interaction type
-        var addInteraction = function (geomtype) {
-            var typeSelect = document.getElementById('types');
-            var value = typeSelect.value;
-            $('#data').val('');
-            if (value !== 'None') {
-                if (draw)
-                    map.removeInteraction(draw);
+        var drawnItems = new L.FeatureGroup();
+        map.addLayer(drawnItems);
 
-                draw = new ol.interaction.Draw({
-                    source: vector_source,
-                    type: geomtype
-                });
-
-
-                map.addInteraction(draw);
+        var drawControlFull = new L.Control.Draw({
+            edit: {
+                featureGroup: drawnItems,
+                edit: false
+            },
+            draw: {
+                polyline: false,
+                circlemarker:false,
+                rectangle:false,
+                circle:false,
+                polygon:{
+                    shapeOptions: {
+                        color: '#007df3',
+                        weight: 4
+                    },
+                    allowIntersection: false, // Restricts shapes to simple polygons
+                }
             }
-            if (featureType === 'Point' || featureType === 'Polygon') {
+        });
 
-                draw.on('drawend', function (e) {
-                    lastFeature = e.feature;
+        map.addControl(drawControlFull);
 
-                });
+        map.on("draw:drawstart ", function (e) {
+            drawnItems.clearLayers();
+        });
 
-                draw.on('drawstart', function (e) {
-                    vector_source.clear();
-                });
+        map.on("draw:created", function (e) {
+            var layer = e.layer;
+            layer.addTo(drawnItems);
 
-            }
-
-
-        };
-
-        vector_layer.getSource().on('addfeature', function(event){
-            //Extracting the point/polygon values from the drawn feature
-            var feature_json = saveData();
-            var parsed_feature = JSON.parse(feature_json);
-            var feature_type = parsed_feature["features"][0]["geometry"]["type"];
-            if (feature_type == 'Point'){
-                var coords = parsed_feature["features"][0]["geometry"]["coordinates"];
-                var proj_coords = ol.proj.transform(coords, 'EPSG:3857','EPSG:4326');
-                $("#point-lat-lon").val(proj_coords);
+            var feature = drawnItems.toGeoJSON();
+            var type = feature.features[0].geometry.type;
+            int_type = type;
+            if (type == 'Point'){
+                var coords = feature["features"][0]["geometry"]["coordinates"];
+                $("#point-lat-lon").val(coords);
                 get_ts();
 
-            } else if (feature_type == 'Polygon'){
-                var coords = parsed_feature["features"][0]["geometry"]["coordinates"][0];
-                proj_coords = [];
-                coords.forEach(function (coord) {
-                    var transformed = ol.proj.transform(coord,'EPSG:3857','EPSG:4326');
-                    proj_coords.push('['+transformed+']');
-                });
-                var json_object = '{"type":"Polygon","coordinates":[['+proj_coords+']]}';
-                $("#poly-lat-lon").val(json_object);
+            } else if (type == 'Polygon'){
+
+                var coords = feature["features"][0]["geometry"];
+                $("#poly-lat-lon").val(JSON.stringify(coords));
                 get_ts();
             }
         });
-        function saveData() {
-            // get the format the user has chosen
-            var data_type = 'GeoJSON',
-                // define a format the data shall be converted to
-                format = new ol.format[data_type](),
-                // this will be the data in the chosen format
-                data;
-            try {
-                // convert the data of the vector_layer into the chosen format
-                data = format.writeFeatures(vector_layer.getSource().getFeatures());
-            } catch (e) {
-                // at time of creation there is an error in the GPX format (18.7.2014)
-                $('#data').val(e.name + ": " + e.message);
-                return;
-            }
-            // $('#data').val(JSON.stringify(data, null, 4));
-            return data;
 
-        }
+        var timeDimensionControl = new L.Control.TimeDimension(timeDimensionControlOptions);
+        map.addControl(timeDimensionControl);
 
-        //Retrieve the relevant modal or tool based on the map interaction item
-        $('#types').change(function (e) {
-            featureType = $(this).find('option:selected').val();
-            clear_coords();
-            vector_layer.getSource().clear();
-            shp_layer.getSource().clear();
-            map.removeInteraction(draw);
-            if(featureType == 'None')
-            {
-                wms_layer.setVisible(true);
-            }else{
-                wms_layer.setVisible(false);
-            }
-            if(featureType == 'None'){
-                $('#data').val('');
+        var mapLink =
+            '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+        L.tileLayer(
+            'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; ' + mapLink + ' Contributors',
+                maxZoom: 18,
+            }).addTo(map);
 
-                map.removeInteraction(draw);
-                vector_layer.getSource().clear();
-                shp_layer.getSource().clear();
-            }else if(featureType == 'Upload')
-            {
-                $modalUpload.modal('show');
-            }else if(featureType == 'Point')
-            {
-                addInteraction(featureType);
-            }else if(featureType == 'Polygon'){
-                addInteraction(featureType);
-            }
-        }).change();
+        var wmsUrl = "https://tethys.servirglobal.net/thredds/wms/tethys/HIWAT/hkhControl_20180329-1800_latlon.nc";
+        var wmsLayer = L.tileLayer.wms(wmsUrl, {
+            layers: 'APCP_surface',
+            format: 'image/png',
+            transparent: true,
+            style:'boxfill/apcp_surface'
+        });
+
+// Create and add a TimeDimension Layer to the map
+        tdWmsLayer = L.timeDimension.layer.wms(wmsLayer);
 
 
     };
 
 
     init_events = function(){
-        (function () {
-            var target, observer, config;
-            // select the target node
-            target = $('#app-content-wrapper')[0];
 
-            observer = new MutationObserver(function () {
-                window.setTimeout(function () {
-                    map.updateSize();
-                }, 350);
-            });
-            $(window).on('resize', function () {
-                map.updateSize();
-            });
-
-            config = {attributes: true};
-
-            observer.observe(target, config);
-        }());
-
-        map.on("singleclick",function(evt){
-            $(element).popover('destroy');
-            if ($("#types").find('option:selected').val()=="None"){
-                var clickCoord = evt.coordinate;
-                var view = map.getView();
-                var viewResolution = view.getResolution();
-
-                wms_url = current_layer.getSource().getGetFeatureInfoUrl(evt.coordinate, viewResolution, view.getProjection(), {'INFO_FORMAT': 'application/json'});
-                popup.setPosition(clickCoord);
-                if (wms_url) {
-                    //Retrieving the details for clicked point via the url
-                    $.ajax({
-                        type: "GET",
-                        url: wms_url,
-                        dataType: 'json',
-                        success: function (result) {
-                            var value = parseFloat(result["features"][0]["properties"]["GRAY_INDEX"]);
-                            value = value.toFixed(2);
-                            $(element).popover({
-                                'placement': 'top',
-                                'html': true,
-                                //Dynamically Generating the popup content
-                                'content':'Value: '+value
-                            });
-
-                            $(element).popover('show');
-                            $(element).next().css('cursor', 'text');
-
-
-                        },
-                        error: function (XMLHttpRequest, textStatus, errorThrown) {
-                            console.log(Error);
-                        }
-                    });
-                }
-            }
-
+        map.on("mousemove", function (event) {
+            document.getElementById('mouse-position').innerHTML = 'Latitude:'+event.latlng.lat.toFixed(5)+', Longitude:'+event.latlng.lng.toFixed(5);
         });
-        //
-        map.on('pointermove', function(evt) {
-            if (evt.dragging) {
-                return;
-            }
-            var pixel = map.getEventPixel(evt.originalEvent);
-            var hit = map.forEachLayerAtPixel(pixel, function(layer) {
-                if (layer != layers[0] && layer != layers[1] && layer != layers[2]){
-                    current_layer = layer;
-                    return true;}
-            });
-            map.getTargetElement().style.cursor = hit ? 'pointer' : '';
-        });
+
+        // map.on("click", function (event) {
+        //     console.log(event);
+        // });
+
     };
 
     init_all = function(){
@@ -523,90 +363,47 @@ var LIBRARY_OBJECT = (function() {
     };
 
     add_wms = function(var_type,interval){
-        if(interval == 'det'){
-            $( "#slider-text" ).text(det_options[0][1]);
-            var ws = 'hiwat'+interval;
-            var store = var_type+'-'+det_options[0][0];
-            var layer_name = ws+':'+store;
-        }else if(interval=='hourly'){
-            $( "#slider-text" ).text(hourly_options[0][1]);
-            var ws = 'hiwat'+interval;
-            var store = var_type+'-'+hourly_options[0][0];
-            var layer_name = ws+':'+store;
-        }else if(interval=='day1'){
-            var ws = 'hiwat'+interval;
-            var store = var_type+'-'+interval;
-            var layer_name = ws+':'+store;
-        }else if(interval=='day2'){
-            var ws = 'hiwat'+interval;
-            var store = var_type+'-'+interval;
-            var layer_name = ws+':'+store;
-        }
 
-        map.removeLayer(wms_layer);
+        var wmsUrl = thredds_urls[interval];
+        // console.log(wmsUrl);
+        // map.removeLayer(wms_layer);
+        map.removeLayer(tdWmsLayer);
         var index = find_var_index(var_type,var_options);
         var scale = var_options[index]["scale"];
+        // gen_color_bar(var_options[index]["colors_list"],scale);
+        var layer_id = var_options[index]["id"];
+        var range = var_options[index]["min"]+','+var_options[index]["max"];
 
-        styling = get_styling(scale,var_options[index]["start"],var_options[index]["end"],index);
-        var sld_string = '<StyledLayerDescriptor version="1.0.0"><NamedLayer><Name>'+layer_name+'</Name><UserStyle><FeatureTypeStyle><Rule>\
-        <RasterSymbolizer> \
-        <ColorMap type="ramp"> \
-        <ColorMapEntry color="#f00" quantity="-9999" label="labelnone" opacity="0"/>'+
-            styling+'</ColorMap>\
-        </RasterSymbolizer>\
-        </Rule>\
-        </FeatureTypeStyle>\
-        </UserStyle>\
-        </NamedLayer>\
-        </StyledLayerDescriptor>';
+        var style = 'boxfill/'+layer_id.toLowerCase();
+        opacity = $('#opacity-slider').slider("option", "value");
 
-        sld_global = sld_string;
-        wms_source = new ol.source.TileWMS({
-            url: gs_wms_url,
-            params: {'LAYERS':layer_name,'SLD_BODY':sld_string,'TILED':'true','feature_count':101},
-            serverType: 'geoserver',
-            // ratio:1,/
-            // hidpi:true,
-            crossOrigin: 'Anonymous'
+        var wmsLayer = L.tileLayer.wms(wmsUrl, {
+            layers: layer_id,
+            format: 'image/png',
+            transparent: true,
+            styles: style,
+            colorscalerange: range,
+            opacity:opacity,
+            version:'1.3.0'
         });
 
-        wms_layer = new ol.layer.Tile({
-            name:'wms_layer',
-            source: wms_source
-        });
+        if(interval=='det'||interval=='hourly'){
+            $('.leaflet-bar-timecontrol').removeClass('hidden');
+            // Create and add a TimeDimension Layer to the map
+            tdWmsLayer = L.timeDimension.layer.wms(wmsLayer);
+            tdWmsLayer.addTo(map);
+        }else{
+            $('.leaflet-bar-timecontrol').addClass('hidden');
+            tdWmsLayer = wmsLayer;
+            tdWmsLayer.addTo(map);
+        }
 
-        // wms_source.updateParams({'LAYERS':layer_name,'SLD_BODY':sld_string});
 
-        map.addLayer(wms_layer);
-        map.updateSize();
+
     };
 
     update_wms = function(var_type,uival,interval){
-        if(interval == 'det'){
-            $( "#slider-text" ).text(det_options[uival][1]);
-            var ws = 'hiwat'+interval;
-            var store = var_type+'-'+det_options[uival][0];
-            var layer_name = ws+':'+store;
-        }else if(interval=='hourly'){
-            $( "#slider-text" ).text(hourly_options[uival][1]);
-            var ws = 'hiwat'+interval;
-            var store = var_type+'-'+hourly_options[uival][0];
-            var layer_name = ws+':'+store;
-        }
 
-        var sld_string = '<StyledLayerDescriptor version="1.0.0"><NamedLayer><Name>'+layer_name+'</Name><UserStyle><FeatureTypeStyle><Rule>\
-        <RasterSymbolizer> \
-        <ColorMap type="ramp"> \
-        <ColorMapEntry color="#f00" quantity="-9999" label="labelnone" opacity="0"/>'+
-            styling+'</ColorMap>\
-        </RasterSymbolizer>\
-        </Rule>\
-        </FeatureTypeStyle>\
-        </UserStyle>\
-        </NamedLayer>\
-        </StyledLayerDescriptor>';
-
-        wms_source.updateParams({'LAYERS':layer_name,'SLD_BODY':sld_string,'feature_count':101});
     };
 
     get_ts = function(){
@@ -617,7 +414,7 @@ var LIBRARY_OBJECT = (function() {
             $('.error').html('');
         }
 
-        var interaction = $("#types option:selected").val();
+        var interaction = int_type;
         var sel_variable = $("#select_variable option:selected").val();
         var var_type = ($("#var_table option:selected").val());
         var interval_type = ($("#interval_table option:selected").val());
@@ -682,8 +479,8 @@ var LIBRARY_OBJECT = (function() {
                     }]
 
                 });
-            $("#cube").addClass('hidden');
-            $("#plotter").removeClass('hidden');
+                $("#cube").addClass('hidden');
+                $("#plotter").removeClass('hidden');
             } else {
                 $("#cube").removeClass('hidden');
                 $(".error").append('<h3>Error Processing Request.</h3>');
@@ -781,27 +578,16 @@ var LIBRARY_OBJECT = (function() {
             $('#types').val('None').trigger('change');
             var var_type = ($("#var_table option:selected").val());
             var interval_type = ($("#interval_table option:selected").val());
-            gen_slider(interval_type);
+            // gen_slider(interval_type);
             add_wms(var_type,interval_type);
         }).change();
 
-        $("#slider").on("slidechange", function(event, ui) {
-            var interval_type = ($("#interval_table option:selected").val());
-            var variable = ($("#var_table option:selected").val());
-            if(interval_type == 'det'){
-                $( "#slider-text" ).text(det_options[ui.value][1]); //Get the value from the slider
-                update_wms(variable,ui.value,interval_type);
-            }else if(interval_type == 'hourly'){
-                $( "#slider-text" ).text(hourly_options[ui.value][1]);
-                update_wms(variable,ui.value,interval_type);
-            }
-
-        });
 
         $("#opacity-slider").on("slidechange", function(event, ui) {
             opacity = ui.value;
             $("#opacity").text(opacity);
-            wms_layer.setOpacity(opacity);
+            tdWmsLayer.setOpacity(opacity);
+            // wms_layer.setOpacity(opacity);
         });
 
 

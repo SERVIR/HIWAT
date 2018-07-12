@@ -17,8 +17,16 @@ import ogr
 import requests
 import random
 from collections import defaultdict
-from config import HIWAT_DET,ROOT_OUTPUT_DIR,HIWAT_DAY1,HIWAT_DAY2,HIWAT_HOURLY
+from config import ROOT_OUTPUT_DIR
 import webcolors
+
+nc_files = get_hiwat_file()
+
+
+HIWAT_DET = nc_files['det']
+HIWAT_HOURLY = nc_files['hourly']
+HIWAT_DAY1 = nc_files['day1']
+HIWAT_DAY2 = nc_files['day2']
 
 def extractRasters(filename,suffix):
 

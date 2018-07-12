@@ -15,6 +15,7 @@ import numpy as np
 import shapely.geometry
 import webcolors
 import cPickle
+import xml.etree.ElementTree as ET
 
 cf = open(COLORS_PICKLE,'rb')
 cPick = cPickle.load(cf)
@@ -46,16 +47,20 @@ def get_pt_values(s_var,geom_data,interval):
     stn_lat = float(coords[1])
     stn_lon = float(coords[0])
 
-    nc_file = None
 
-    if interval == 'det':
-        nc_file = HIWAT_DET
-    if interval == 'hourly':
-        nc_file = HIWAT_HOURLY
-    if interval == 'day1':
-        nc_file = HIWAT_DAY1
-    if interval == 'day2':
-        nc_file = HIWAT_DAY2
+
+    nc_files = get_hiwat_file()
+
+    nc_file = nc_files[interval]
+
+    # if interval == 'det':
+    #     nc_file = HIWAT_DET
+    # if interval == 'hourly':
+    #     nc_file = HIWAT_HOURLY
+    # if interval == 'day1':
+    #     nc_file = HIWAT_DAY1
+    # if interval == 'day2':
+    #     nc_file = HIWAT_DAY2
 
     nc_fid = Dataset(nc_file, 'r') #Reading the netCDF file
     lis_var = nc_fid.variables
@@ -121,16 +126,18 @@ def get_poylgon_values(s_var, geom_data, interval):
     maxx = float(bounds[2])
     maxy = float(bounds[3])
 
-    nc_file = None
+    nc_files = get_hiwat_file()
 
-    if interval == 'det':
-        nc_file = HIWAT_DET
-    if interval == 'hourly':
-        nc_file = HIWAT_HOURLY
-    if interval == 'day1':
-        nc_file = HIWAT_DAY1
-    if interval == 'day2':
-        nc_file = HIWAT_DAY2
+    nc_file = nc_files[interval]
+
+    # if interval == 'det':
+    #     nc_file = HIWAT_DET
+    # if interval == 'hourly':
+    #     nc_file = HIWAT_HOURLY
+    # if interval == 'day1':
+    #     nc_file = HIWAT_DAY1
+    # if interval == 'day2':
+    #     nc_file = HIWAT_DAY2
     #
     nc_fid = Dataset(nc_file, 'r')  # Reading the netCDF file
     lis_var = nc_fid.variables
@@ -211,7 +218,7 @@ def generate_variables_meta():
             end = linevals[7]
 
             try:
-                print variable_id.lower()
+                # print variable_id.lower()
                 colors_list = retrieve_colors(str(variable_id).lower())
                 scale = calc_color_range(float(vmin), float(vmax),len(colors_list))
                 variable_list.append({
@@ -227,7 +234,7 @@ def generate_variables_meta():
                     'colors_list':colors_list
                 })
             except Exception as e:
-                print variable_id,e
+                # print variable_id,e
                 var_issues.append(variable_id)
                 scale = calc_color_range(float(vmin), float(vmax), 20)
                 variable_list.append({
@@ -244,7 +251,7 @@ def generate_variables_meta():
                 continue
 
 
-    print var_issues
+    # print var_issues
     return variable_list
 
 
@@ -304,7 +311,7 @@ def retrieve_colors(field):
         fillcols = [c['1'], c['2'], c['3'], c['4'], c['5'], c['6'], c['7'], c['8'], c['9'], c['10'], c['11'], c['12'], c['13'], c['14']]
         below = 'white'
         above = 'purple'
-    elif (('uphlcy16' in field) or ('uphlcy25' in field)):
+    elif (('uphlcy16' in field) or ('uphlcy25' in field) or ('uphlcy' in field)):
         clevs = [50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700]
         fillcols = [c['1'], c['2'], c['3'], c['4'], c['5'], c['6'], c['7'], c['8'], c['9'], c['10'], c['11'], c['12'], c['13'], c['14']]
         below = 'white'
@@ -336,5 +343,92 @@ def calc_color_range(min,max,classes):
         scale = np.arange(min, max, interval).tolist()
 
     return scale
+
+def get_thredds_info():
+    catalog_url = THREDDS_catalog
+
+    catalog_wms = THREDDS_wms
+
+    urls_obj = {}
+    if catalog_url[-1] != "/":
+        catalog_url = catalog_url + '/'
+
+    if catalog_wms[-1] != "/":
+        catalog_wms = catalog_wms + '/'
+
+    catalog_xml_url = catalog_url+'catalog.xml'
+
+    possible_dates = []
+    valid_dates = []
+
+    cat_response = requests.get(catalog_xml_url,verify=False)
+
+    cat_tree = ET.fromstring(cat_response.content)
+
+    for elem in cat_tree.iter():
+        for k, v in elem.attrib.items():
+            if 'title' in k and '2018' in v:
+                possible_dates.append(v)
+
+    for date in possible_dates:
+        try:
+
+            valid_date = datetime.datetime.strptime(date, "%Y%m%d18")
+            valid_dates.append(valid_date)
+
+        except Exception as e:
+            continue
+
+
+    latest_date = max(valid_dates).strftime("%Y%m%d18")
+
+    date_xml_url = catalog_url + latest_date + '/catalog.xml'
+
+    date_xml = requests.get(date_xml_url, verify=False)
+
+    date_response = ET.fromstring(date_xml.content)
+
+    for el in date_response.iter():
+        for k, v in el.items():
+            if 'urlPath' in k:
+                if 'hourly' in v:
+                    urls_obj['hourly'] = catalog_wms+v
+                if 'Control' in v:
+                    urls_obj['det'] = catalog_wms+v
+                if 'day1' in v:
+                    urls_obj['day1'] = catalog_wms+v
+                if 'day2' in v:
+                    urls_obj['day2'] = catalog_wms+v
+
+    return urls_obj
+
+def get_hiwat_file():
+
+    hiwat_files = {}
+
+    for dir in os.listdir(HIWAT_storage):
+        if 'WRF' in dir:
+            WRF = os.path.join(HIWAT_storage, dir)
+            for store in os.listdir(WRF):
+                if 'servir_hkh' in store:
+                    hiwat_dir = os.path.join(WRF,store)
+                    latest_dir = max([os.path.join(hiwat_dir, d) for d in os.listdir(hiwat_dir)], key=os.path.getmtime)
+                    for file in os.listdir(latest_dir):
+                        if 'hourly' in file:
+                            hiwat_files['hourly'] = os.path.join(latest_dir,file)
+                        if 'Control' in file:
+                            hiwat_files['det'] = os.path.join(latest_dir,file)
+                        if 'day1' in file:
+                            hiwat_files['day1'] = os.path.join(latest_dir,file)
+                        if 'day2' in file:
+                            hiwat_files['day2'] = os.path.join(latest_dir,file)
+
+    return hiwat_files
+
+
+
+
+
+
 
 
