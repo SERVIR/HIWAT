@@ -2,17 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b711ed3c-1832-4001-ad20-9ce133638d10" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/tethysapp-hiwat.iml" afterPath="$PROJECT_DIR$/.idea/tethysapp-hiwat.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/tethysapp/hiwat/app.py" afterPath="$PROJECT_DIR$/tethysapp/hiwat/app.py" />
-      <change beforePath="$PROJECT_DIR$/tethysapp/hiwat/config.py" afterPath="$PROJECT_DIR$/tethysapp/hiwat/config.py" />
       <change beforePath="$PROJECT_DIR$/tethysapp/hiwat/controllers.py" afterPath="$PROJECT_DIR$/tethysapp/hiwat/controllers.py" />
-      <change beforePath="$PROJECT_DIR$/tethysapp/hiwat/hiwat.py" afterPath="$PROJECT_DIR$/tethysapp/hiwat/hiwat.py" />
-      <change beforePath="$PROJECT_DIR$/tethysapp/hiwat/public/css/main.css" afterPath="$PROJECT_DIR$/tethysapp/hiwat/public/css/main.css" />
-      <change beforePath="$PROJECT_DIR$/tethysapp/hiwat/public/js/hiwat.js" afterPath="$PROJECT_DIR$/tethysapp/hiwat/public/js/hiwat.js" />
-      <change beforePath="$PROJECT_DIR$/tethysapp/hiwat/templates/hiwat/home.html" afterPath="$PROJECT_DIR$/tethysapp/hiwat/templates/hiwat/home.html" />
-      <change beforePath="$PROJECT_DIR$/tethysapp/hiwat/utils.py" afterPath="$PROJECT_DIR$/tethysapp/hiwat/utils.py" />
+      <change beforePath="$PROJECT_DIR$/tethysapp/hiwat/public/js/leaf.js" afterPath="$PROJECT_DIR$/tethysapp/hiwat/public/js/leaf.js" />
+      <change beforePath="$PROJECT_DIR$/tethysapp/hiwat/templates/hiwat/leaf.html" afterPath="$PROJECT_DIR$/tethysapp/hiwat/templates/hiwat/leaf.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,9 +19,11 @@
       <file leaf-file-name="controllers.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/controllers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="3" column="28" lean-forward="false" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
-              <folding />
+            <state relative-caret-position="512">
+              <caret line="47" column="46" lean-forward="true" selection-start-line="47" selection-start-column="46" selection-end-line="47" selection-end-column="46" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -48,7 +43,7 @@
       <file leaf-file-name="utils.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
+            <state relative-caret-position="702">
               <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="62" selection-end-column="30" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
@@ -61,7 +56,7 @@
         <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/config.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="414">
-              <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -70,7 +65,7 @@
       <file leaf-file-name="hiwat.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/hiwat.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4160">
+            <state relative-caret-position="18">
               <caret line="28" column="27" lean-forward="false" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
@@ -93,29 +88,30 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="leaf.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="leaf.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/templates/hiwat/leaf.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-934">
-              <caret line="67" column="78" lean-forward="false" selection-start-line="67" selection-start-column="78" selection-end-line="67" selection-end-column="78" />
+            <state relative-caret-position="918">
+              <caret line="86" column="18" lean-forward="false" selection-start-line="86" selection-start-column="18" selection-end-line="86" selection-end-column="18" />
               <folding>
                 <element signature="n#style#0;n#select#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#select#1;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#3;n#!!top" expanded="true" />
-                <element signature="e#4293#4300#1" expanded="true" />
-                <element signature="e#6827#6834#1" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#10;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#10;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#6;n#!!top" expanded="true" />
+                <element signature="e#4553#4560#1" expanded="true" />
+                <element signature="e#7087#7094#1" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#9;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#9;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="33" column="26" lean-forward="false" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
+            <state relative-caret-position="504">
+              <caret line="28" column="31" lean-forward="false" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -124,8 +120,8 @@
       <file leaf-file-name="hiwat.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/public/js/hiwat.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="237" column="12" lean-forward="false" selection-start-line="237" selection-start-column="12" selection-end-line="253" selection-end-column="13" />
+            <state relative-caret-position="2106">
+              <caret line="269" column="13" lean-forward="true" selection-start-line="269" selection-start-column="13" selection-end-line="269" selection-end-column="13" />
               <folding>
                 <marker date="1531145416356" expanded="true" signature="19349:19760" ph="..." />
                 <marker date="1531145416356" expanded="true" signature="19361:19726" ph="..." />
@@ -149,8 +145,8 @@
       <file leaf-file-name="leaf.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/public/js/leaf.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-7058">
-              <caret line="169" column="57" lean-forward="false" selection-start-line="169" selection-start-column="57" selection-end-line="169" selection-end-column="57" />
+            <state relative-caret-position="-3097">
+              <caret line="206" column="0" lean-forward="false" selection-start-line="206" selection-start-column="0" selection-end-line="206" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -184,6 +180,7 @@
       <find>init_</find>
       <find>get_ts</find>
       <find>HIWAT_de</find>
+      <find>document</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -199,14 +196,14 @@
         <option value="$USER_HOME$/tethys/src/tethys_apps/templates/tethys_apps/app_library.html" />
         <option value="$PROJECT_DIR$/tethysapp/hiwat/public/css/main.css" />
         <option value="$PROJECT_DIR$/tethysapp/hiwat/public/js/hiwat.js" />
-        <option value="$PROJECT_DIR$/tethysapp/hiwat/app.py" />
         <option value="$PROJECT_DIR$/tethysapp/hiwat/templates/hiwat/home.html" />
-        <option value="$PROJECT_DIR$/tethysapp/hiwat/templates/hiwat/leaf.html" />
         <option value="$PROJECT_DIR$/tethysapp/hiwat/utils.py" />
-        <option value="$PROJECT_DIR$/tethysapp/hiwat/public/js/leaf.js" />
-        <option value="$PROJECT_DIR$/tethysapp/hiwat/controllers.py" />
         <option value="$PROJECT_DIR$/tethysapp/hiwat/hiwat.py" />
         <option value="$PROJECT_DIR$/tethysapp/hiwat/config.py" />
+        <option value="$PROJECT_DIR$/tethysapp/hiwat/app.py" />
+        <option value="$PROJECT_DIR$/tethysapp/hiwat/controllers.py" />
+        <option value="$PROJECT_DIR$/tethysapp/hiwat/public/js/leaf.js" />
+        <option value="$PROJECT_DIR$/tethysapp/hiwat/templates/hiwat/leaf.html" />
       </list>
     </option>
   </component>
@@ -275,7 +272,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1807" height="951" extended-state="6" />
+    <frame x="64" y="-11" width="2497" height="1347" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -381,7 +378,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="14" column="76" lean-forward="false" selection-start-line="14" selection-start-column="59" selection-end-line="14" selection-end-column="76" />
-          <folding />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -480,7 +479,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="14" column="76" lean-forward="false" selection-start-line="14" selection-start-column="59" selection-end-line="14" selection-end-column="76" />
-          <folding />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -579,7 +580,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="14" column="76" lean-forward="false" selection-start-line="14" selection-start-column="59" selection-end-line="14" selection-end-column="76" />
-          <folding />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -700,7 +703,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
           <caret line="1" column="70" lean-forward="false" selection-start-line="1" selection-start-column="67" selection-end-line="1" selection-end-column="70" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -714,10 +716,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/public/js/hiwat.js">
+    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/templates/hiwat/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1278">
+          <caret line="71" column="41" lean-forward="false" selection-start-line="71" selection-start-column="41" selection-end-line="71" selection-end-column="41" />
+          <folding>
+            <element signature="n#style#0;n#div#3;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#6;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#10;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="702">
+          <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="62" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/hiwat.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
-          <caret line="237" column="12" lean-forward="false" selection-start-line="237" selection-start-column="12" selection-end-line="253" selection-end-column="13" />
+          <caret line="28" column="27" lean-forward="false" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/public/js/hiwat.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2106">
+          <caret line="269" column="13" lean-forward="true" selection-start-line="269" selection-start-column="13" selection-end-line="269" selection-end-column="13" />
           <folding>
             <marker date="1531145416356" expanded="true" signature="19349:19760" ph="..." />
             <marker date="1531145416356" expanded="true" signature="19361:19726" ph="..." />
@@ -737,85 +771,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="33" column="26" lean-forward="false" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/templates/hiwat/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1278">
-          <caret line="71" column="41" lean-forward="false" selection-start-line="71" selection-start-column="41" selection-end-line="71" selection-end-column="41" />
-          <folding>
-            <element signature="n#style#0;n#div#3;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#6;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#10;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/public/js/leaf.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7058">
-          <caret line="169" column="57" lean-forward="false" selection-start-line="169" selection-start-column="57" selection-end-line="169" selection-end-column="57" />
+        <state relative-caret-position="-3097">
+          <caret line="206" column="0" lean-forward="false" selection-start-line="206" selection-start-column="0" selection-end-line="206" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/utils.py">
+    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/templates/hiwat/leaf.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="62" selection-end-column="30" />
+        <state relative-caret-position="918">
+          <caret line="86" column="18" lean-forward="false" selection-start-line="86" selection-start-column="18" selection-end-line="86" selection-end-column="18" />
           <folding>
-            <element signature="e#0#15#0" expanded="true" />
+            <element signature="n#style#0;n#select#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#6;n#!!top" expanded="true" />
+            <element signature="e#4553#4560#1" expanded="true" />
+            <element signature="e#7087#7094#1" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#9;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#9;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/hiwat.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4160">
-          <caret line="28" column="27" lean-forward="false" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/controllers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="28" lean-forward="false" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/config.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
-          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/templates/hiwat/leaf.html">
+    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/controllers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-934">
-          <caret line="67" column="78" lean-forward="false" selection-start-line="67" selection-start-column="78" selection-end-line="67" selection-end-column="78" />
+        <state relative-caret-position="512">
+          <caret line="47" column="46" lean-forward="true" selection-start-line="47" selection-start-column="46" selection-end-line="47" selection-end-column="46" />
           <folding>
-            <element signature="n#style#0;n#select#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#select#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#!!top" expanded="true" />
-            <element signature="e#4293#4300#1" expanded="true" />
-            <element signature="e#6827#6834#1" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#10;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#10;n#!!top" expanded="true" />
+            <element signature="e#0#35#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="28" column="31" lean-forward="false" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>

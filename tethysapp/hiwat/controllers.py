@@ -44,7 +44,7 @@ def home(request):
     context = {
         'select_variable':select_variable,
         'geoserver_wms_url':geoserver_wms_url,
-        'var_options':json.dumps(var_options),
+        # 'var_options':json.dumps(var_options),
         'det_options':json.dumps(det_options),
         'hourly_options':json.dumps(hourly_options)
     }

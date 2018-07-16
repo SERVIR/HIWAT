@@ -63,8 +63,8 @@
 <br>
 <div class="error"></div>
 <b>Legend</b>
-<div id="legend"></div>
-<div align="right"><canvas id="cv" width="200px" height="650px"></canvas></div>
+<div id="legend" class="info legend"></div>
+<!--<div align="right"><canvas id="cv" width="200px" height="650px"></canvas></div>-->
 <div id="metadata" style="display: none" data-thredds-urls="{{thredds_urls}}" data-var-options="{{var_options}}" data-hourly-options="{{hourly_options}}" data-det-options="{{det_options}}"  data-wms-url="{{geoserver_wms_url}}"></div>
 <input type="text" name="point-lat-lon" id="point-lat-lon" hidden>
 <input type="text" name="poly-lat-lon" id="poly-lat-lon" hidden>
@@ -77,6 +77,16 @@
         height: 100%;
         width: 100%;
     }
+    .info {
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: black;
+    background: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+        width:120px;
+        height:270px;
+}
+
 </style>
 
 <div id="map" class="map"></div>

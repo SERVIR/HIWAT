@@ -27,6 +27,7 @@ var LIBRARY_OBJECT = (function() {
         hourly_options,
         int_type,
         layers,
+        Legend,
         map,
         $modalUpload,
         $modalChart,
@@ -398,7 +399,9 @@ var LIBRARY_OBJECT = (function() {
             tdWmsLayer.addTo(map);
         }
 
+        var imgsrc = wmsUrl + "?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetLegendGraphic&LAYER="+layer_id+"&colorscalerange="+range+"&PALETTE="+layer_id.toLowerCase()+"&transparent=TRUE";
 
+        document.getElementById('legend').innerHTML = '<img src="' + imgsrc + '" alt="legend">';
 
     };
 
