@@ -19,51 +19,28 @@ var LIBRARY_OBJECT = (function() {
      *************************************************************************/
     var animationDelay,
         $btnGetPlot,
-        current_layer,
-        day1_options,
-        day2_options,
         det_options,
-        element,
         hourly_options,
         int_type,
-        layers,
-        Legend,
         map,
-        $modalUpload,
         $modalChart,
         opacity,
-        popup,
         public_interface,			// Object returned by the module
-        select_source,
-        selectedFeatures,
-        shp_layer,
-        shp_source,
-        sld_global,
         $slider,
         $sliderContainer,
-        slider_max,
         sliderInterval,
-        styling,
         tdWmsLayer,
         thredds_urls,
         var_options,
-        gs_wms_url,
-        wms_url,
-        wms_layer,
-        wms_source;
+        gs_wms_url;
 
 
     /************************************************************************
      *                    PRIVATE FUNCTION DECLARATIONS
      *************************************************************************/
     var add_wms,
-        animate,
-        update_wms,
         clear_coords,
-        gen_color_bar,
         get_ts,
-        gen_slider,
-        get_styling,
         init_dropdown,
         init_events,
         init_jquery_vars,
@@ -128,7 +105,7 @@ var LIBRARY_OBJECT = (function() {
             autoPlay:      false,
             minSpeed:      1,
             speedStep:     0.5,
-            maxSpeed:      4,
+            maxSpeed:      20,
             timeSliderDragUpdate: true,
             loopButton:true,
             limitSliders:true
@@ -215,9 +192,6 @@ var LIBRARY_OBJECT = (function() {
             document.getElementById('mouse-position').innerHTML = 'Latitude:'+event.latlng.lat.toFixed(5)+', Longitude:'+event.latlng.lng.toFixed(5);
         });
 
-        // map.on("click", function (event) {
-        //     console.log(event);
-        // });
 
     };
 
@@ -242,125 +216,6 @@ var LIBRARY_OBJECT = (function() {
 
             }
         });
-    };
-
-    gen_slider = function(interval){
-        $sliderContainer.removeClass('hidden');
-
-        if(interval == 'det'){
-
-            slider_max = 49;
-            $("#slider").slider({
-                value:0,
-                min: 0,
-                max: slider_max - 1,
-                step: 1, //Assigning the slider step based on the depths that were retrieved in the controller
-                animate:"fast",
-                slide: function( event, ui ) {
-                }
-
-            });
-            $sliderContainer.removeClass('hidden');
-
-        }else if(interval == 'hourly'){
-            slider_max = 48;
-            $( "#slider").slider({
-                value:0,
-                min: 0,
-                max: slider_max - 1,
-                step: 1, //Assigning the slider step based on the depths that were retrieved in the controller
-                animate:"fast",
-                slide: function( event, ui ) {
-                }
-
-            });
-            $sliderContainer.removeClass('hidden');
-
-        }else if(interval == 'day1' || interval == 'day2'){
-            slider_max = 0;
-            $( "#slider").slider({
-                value:0,
-                min: 0,
-                max: slider_max - 1,
-                step: 1, //Assigning the slider step based on the depths that were retrieved in the controller
-                animate:"fast",
-                slide: function( event, ui ) {
-                }
-
-            });
-            $sliderContainer.addClass('hidden');
-
-        }
-
-    };
-
-    gen_color_bar = function(colors,scale){
-        var cv  = document.getElementById('cv'),
-            ctx = cv.getContext('2d');
-        ctx.clearRect(0,0,cv.width,cv.height);
-        // ctx.beginPath();
-        // ctx.fillStyle = 'white';
-        // ctx.fillRect(0,20,20,20);
-        // ctx.fillStyle = 'black';
-        // ctx.fillText(scale[0].toFixed(2),20,8);
-        colors.forEach(function(color,i){
-            // ctx.beginPath();
-            ctx.fillStyle = color;
-            ctx.fillRect(0,(i+1)*20,20,20);
-            ctx.fillStyle = 'black';
-            ctx.fillText(scale[i].toFixed(2),25,(i+1)*21);
-        });
-    };
-
-    get_styling = function(scale,start,end,index){
-        // var start = 'blue';
-        // var end = 'red';
-        var sld_color_string = '';
-
-        if ("colors_list" in var_options[index]){
-            // console.log(var_options[index]["colors_list"]);
-            var colors = var_options[index]["colors_list"];
-            gen_color_bar(colors,scale);
-            colors.forEach(function(color,i){
-                if(i==0){
-                    var color_map_entry = '<ColorMapEntry color="#f00" quantity="'+scale[i]+'" label="label'+i+'" opacity="0.1"/>';
-                }else{
-                    var color_map_entry = '<ColorMapEntry color="'+color+'" quantity="'+scale[i]+'" label="label'+i+'" opacity="'+opacity+'"/>';
-                }
-
-                sld_color_string += color_map_entry;
-            });
-        }else{
-            if(scale[scale.length-1] == 0){
-                var colors = chroma.scale([start,start]).mode('lab').correctLightness().colors(20);
-                // var colors2 = chroma.scale([start,start]).classes(20);
-                // console.log(colors2);
-                gen_color_bar(colors,scale);
-                if(i==0){
-                    var color_map_entry = '<ColorMapEntry color="#f00" quantity="'+scale[i]+'" label="label'+i+'" opacity="0.1"/>';
-                }else{
-                    var color_map_entry = '<ColorMapEntry color="'+color+'" quantity="'+scale[i]+'" label="label'+i+'" opacity="'+opacity+'"/>';
-                }
-                sld_color_string += color_map_entry;
-            }else{
-                var colors = chroma.scale([start,end]).mode('lab').correctLightness().colors(20);
-
-                // var colors2 = chroma.scale([start,end]).classes(20);
-                // console.log(colors);
-                gen_color_bar(colors,scale);
-                colors.forEach(function(color,i){
-                    if(i==0){
-                        var color_map_entry = '<ColorMapEntry color="#f00" quantity="'+scale[i]+'" label="label'+i+'" opacity="0"/>';
-                    }else{
-                        var color_map_entry = '<ColorMapEntry color="'+color+'" quantity="'+scale[i]+'" label="label'+i+'" opacity="'+opacity+'"/>';
-                    }
-                    sld_color_string += color_map_entry;
-                });
-            }
-        }
-
-
-        return sld_color_string
     };
 
     add_wms = function(var_type,interval){
@@ -391,7 +246,11 @@ var LIBRARY_OBJECT = (function() {
         if(interval=='det'||interval=='hourly'){
             $('.leaflet-bar-timecontrol').removeClass('hidden');
             // Create and add a TimeDimension Layer to the map
-            tdWmsLayer = L.timeDimension.layer.wms(wmsLayer);
+            tdWmsLayer = L.timeDimension.layer.wms(wmsLayer,{
+                updateTimeDimension:true,
+                setDefaultTime:true,
+                cache:48
+            });
             tdWmsLayer.addTo(map);
         }else{
             $('.leaflet-bar-timecontrol').addClass('hidden');
@@ -402,10 +261,6 @@ var LIBRARY_OBJECT = (function() {
         var imgsrc = wmsUrl + "?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetLegendGraphic&LAYER="+layer_id+"&colorscalerange="+range+"&PALETTE="+layer_id.toLowerCase()+"&transparent=TRUE";
 
         document.getElementById('legend').innerHTML = '<img src="' + imgsrc + '" alt="legend">';
-
-    };
-
-    update_wms = function(var_type,uival,interval){
 
     };
 
@@ -495,48 +350,6 @@ var LIBRARY_OBJECT = (function() {
 
     $("#btn-get-plot").on('click',get_ts);
 
-    animate = function(){
-        var sliderVal = $("#slider").slider("value");
-
-        sliderInterval = setInterval(function() {
-            $("#slider").slider("value", sliderVal);
-            sliderVal += 1;
-            if (sliderVal===slider_max - 1) sliderVal=0;
-        }, animationDelay);
-    };
-
-    $(".btn-run").on("click", animate);
-    //Set the slider value to the current value to start the animation at the );
-    $(".btn-stop").on("click", function() {
-        //Call clearInterval to stop the animation.
-        clearInterval(sliderInterval);
-    });
-
-    $(".btn-increase").on("click", function() {
-        clearInterval(sliderInterval);
-
-        if(animationDelay > 250){
-
-            animationDelay = animationDelay - 250;
-            $("#speed").text((1/(animationDelay/1000)).toFixed(2));
-            animate();
-        }
-
-    });
-
-    //Decrease the slider timer when you click decrease the speed
-    $(".btn-decrease").on("click", function() {
-        clearInterval(sliderInterval);
-        animationDelay = animationDelay + 250;
-        $("#speed").text((1/(animationDelay/1000)).toFixed(2));
-        animate();
-    });
-
-
-    $(function() {
-
-    });
-
     /************************************************************************
      *                        DEFINE PUBLIC INTERFACE
      *************************************************************************/
@@ -553,15 +366,7 @@ var LIBRARY_OBJECT = (function() {
     // the DOM tree finishes loading
     $(function() {
         init_all();
-        // Highcharts.setOptions({lang: {noData: "No data to display. Use the map interaction to fill the chart."}});
-        // var chart = Highcharts.chart('plotter', {
-        //     series: [{
-        //         data: []
-        //     }]
-        // });
-        animationDelay  = 500;
-        sliderInterval = {};
-        $("#speed").text(((animationDelay/1000)).toFixed(2));
+
         $("#interval_table").change(function(){
             var interval_type = ($("#interval_table option:selected").val());
 
@@ -581,7 +386,6 @@ var LIBRARY_OBJECT = (function() {
             $('#types').val('None').trigger('change');
             var var_type = ($("#var_table option:selected").val());
             var interval_type = ($("#interval_table option:selected").val());
-            // gen_slider(interval_type);
             add_wms(var_type,interval_type);
         }).change();
 
@@ -590,7 +394,7 @@ var LIBRARY_OBJECT = (function() {
             opacity = ui.value;
             $("#opacity").text(opacity);
             tdWmsLayer.setOpacity(opacity);
-            // wms_layer.setOpacity(opacity);
+
         });
 
 

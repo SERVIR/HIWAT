@@ -22,11 +22,13 @@ import webcolors
 
 nc_files = get_hiwat_file()
 
-
-HIWAT_DET = nc_files['det']
-HIWAT_HOURLY = nc_files['hourly']
-HIWAT_DAY1 = nc_files['day1']
-HIWAT_DAY2 = nc_files['day2']
+try:
+    HIWAT_DET = nc_files['det']
+    HIWAT_HOURLY = nc_files['hourly']
+    HIWAT_DAY1 = nc_files['day1']
+    HIWAT_DAY2 = nc_files['day2']
+except Exception as e:
+    pass
 
 def extractRasters(filename,suffix):
 
@@ -246,42 +248,47 @@ def upload_tiff(dir,geoserver_rest_url,workspace,uname,pwd):
             requests.put(request_url,verify=False,headers=headers,data=data,auth=(uname,pwd)) #Creating the resource on the geoserver
 
 def det_time_options(filename, suffix):
-
-    lis_fid = Dataset(filename, 'r')  # Reading the netcdf file
-    lis_var = lis_fid.variables  # Get the netCDF variables
-    toexclude = ['latitude', 'longitude', 'time']
-
-    time = lis_var['time'][:]
     date_options = []
-    # xmin, ymin, xmax, ymax = [lon.min(), lat.min(), lon.max(), lat.max()]
-    # nrows, ncols = np.shape(data)
-    # xres = (xmax - xmin) / float(ncols)
-    # yres = (ymax - ymin) / float(nrows)
-    # geotransform = (xmin, xres, 0, ymax, 0, -yres)
-    # print(geotransform,GeoT)
-    # print(lat,lon)
-    for timestep, v in enumerate(time):
-        # print timestep,v
-        dt_str = datetime.datetime.utcfromtimestamp(int(v)).strftime('%Y_%m_%d_%H_%M')
-        dt_view = datetime.datetime.utcfromtimestamp(int(v)).strftime('%Y %m %d %H:%M')
-        date_options.append([dt_str,dt_view])
+    try:
+
+        lis_fid = Dataset(filename, 'r')  # Reading the netcdf file
+        lis_var = lis_fid.variables  # Get the netCDF variables
+        toexclude = ['latitude', 'longitude', 'time']
+
+        time = lis_var['time'][:]
+
+        for timestep, v in enumerate(time):
+            # print timestep,v
+            dt_str = datetime.datetime.utcfromtimestamp(int(v)).strftime('%Y_%m_%d_%H_%M')
+            dt_view = datetime.datetime.utcfromtimestamp(int(v)).strftime('%Y %m %d %H:%M')
+            date_options.append([dt_str,dt_view])
+
+    except Exception as e:
+        pass
 
     return date_options
 
 
 def hourly_time_options(filename, suffix):
-    lis_fid = Dataset(filename, 'r')  # Reading the netcdf file
-    lis_var = lis_fid.variables  # Get the netCDF variables
-    time = lis_var['time'][:]
     date_options = []
 
-    for timestep, v in enumerate(time):
+    try:
 
-        dt_str = netCDF4.num2date(lis_var['time'][timestep], units=lis_var['time'].units,
-                                  calendar=lis_var['time'].calendar)
-        dt_str2 = datetime.datetime.strftime(dt_str, '%Y_%m_%d_%H_%M')
-        dt_view = datetime.datetime.strftime(dt_str, '%Y %m %d %H:%M')
-        date_options.append([dt_str2,dt_view])
+        lis_fid = Dataset(filename, 'r')  # Reading the netcdf file
+        lis_var = lis_fid.variables  # Get the netCDF variables
+        time = lis_var['time'][:]
+
+
+        for timestep, v in enumerate(time):
+
+            dt_str = netCDF4.num2date(lis_var['time'][timestep], units=lis_var['time'].units,
+                                      calendar=lis_var['time'].calendar)
+            dt_str2 = datetime.datetime.strftime(dt_str, '%Y_%m_%d_%H_%M')
+            dt_view = datetime.datetime.strftime(dt_str, '%Y %m %d %H:%M')
+            date_options.append([dt_str2,dt_view])
+
+    except Exception as e:
+        pass
 
     return date_options
 
