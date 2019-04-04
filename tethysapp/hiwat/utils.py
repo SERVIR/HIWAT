@@ -17,23 +17,23 @@ import webcolors
 import cPickle
 import xml.etree.ElementTree as ET
 
-cf = open(COLORS_PICKLE,'rb')
-cPick = cPickle.load(cf)
-cf.close()
-
-cl1 = [[0.0000, 0.9255, 0.9255],[0.0039, 0.6275, 0.9647],[0.0000, 0.0000, 0.9647],[0.0000, 1.0000, 0.0000],[0.0000, 0.7843, 0.0000],[0.0000, 0.5647, 0.0000],[1.0000, 1.0000, 0.0000],[0.9059, 0.7529, 0.0000],[1.0000, 0.5647, 0.0000],[1.0000, 0.0000, 0.0000],[0.8392, 0.0000, 0.0000],[0.7529, 0.0000, 0.0000],[1.0000, 0.0000, 1.0000],[0.6000, 0.3333, 0.7882]]
-
-c = {}
-for color in cPick:
-    hex = webcolors.rgb_to_hex((int(cPick[color][0]*255),int(cPick[color][1]*255),int(cPick[color][2]*255)))
-    c[color] = hex
-
-i = 1
-for color in cl1:
-    hex = webcolors.rgb_to_hex((int(color[0] * 255), int(color[1] * 255), int(color[2] * 255)))
-    keygen = str(i)
-    c[keygen] = hex
-    i+=1
+# cf = open(COLORS_PICKLE,'rb')
+# cPick = cPickle.load(cf)
+# cf.close()
+#
+# cl1 = [[0.0000, 0.9255, 0.9255],[0.0039, 0.6275, 0.9647],[0.0000, 0.0000, 0.9647],[0.0000, 1.0000, 0.0000],[0.0000, 0.7843, 0.0000],[0.0000, 0.5647, 0.0000],[1.0000, 1.0000, 0.0000],[0.9059, 0.7529, 0.0000],[1.0000, 0.5647, 0.0000],[1.0000, 0.0000, 0.0000],[0.8392, 0.0000, 0.0000],[0.7529, 0.0000, 0.0000],[1.0000, 0.0000, 1.0000],[0.6000, 0.3333, 0.7882]]
+#
+# c = {}
+# for color in cPick:
+#     hex = webcolors.rgb_to_hex((int(cPick[color][0]*255),int(cPick[color][1]*255),int(cPick[color][2]*255)))
+#     c[color] = hex
+#
+# i = 1
+# for color in cl1:
+#     hex = webcolors.rgb_to_hex((int(color[0] * 255), int(color[1] * 255), int(color[2] * 255)))
+#     keygen = str(i)
+#     c[keygen] = hex
+#     i+=1
 
 def get_pt_values(s_var,geom_data,interval):
 
@@ -367,7 +367,8 @@ def get_thredds_info():
 
     for elem in cat_tree.iter():
         for k, v in elem.attrib.items():
-            if 'title' in k and '2018' in v:
+            if 'title' in k:
+            # if 'title' in k and '2018' in v:
                 possible_dates.append(v)
 
     for date in possible_dates:
@@ -391,10 +392,10 @@ def get_thredds_info():
     for el in date_response.iter():
         for k, v in el.items():
             if 'urlPath' in k:
-                if 'hourly' in v:
-                    urls_obj['hourly'] = catalog_wms+v
                 if 'Control' in v:
                     urls_obj['det'] = catalog_wms+v
+                if 'hourly' in v:
+                    urls_obj['hourly'] = catalog_wms+v
                 if 'day1' in v:
                     urls_obj['day1'] = catalog_wms+v
                 if 'day2' in v:
@@ -402,26 +403,45 @@ def get_thredds_info():
 
     return urls_obj
 
+# def get_hiwat_file():
+#
+#     hiwat_files = {}
+#
+#     for dir in os.listdir(HIWAT_storage):
+#         if 'WRF' in dir:
+#             WRF = os.path.join(HIWAT_storage, dir)
+#             for store in os.listdir(WRF):
+#                 if 'servir_hkh' in store:
+#                     hiwat_dir = os.path.join(HIWAT_storage,dir)
+#                     latest_dir = max([os.path.join(hiwat_dir, d) for d in os.listdir(hiwat_dir)], key=os.path.getmtime)
+#                     for file in os.listdir(latest_dir):
+#                         if 'hourly' in file:
+#                             hiwat_files['hourly'] = os.path.join(latest_dir,file)
+#                         if 'Control' in file:
+#                             hiwat_files['det'] = os.path.join(latest_dir,file)
+#                         if 'day1' in file:
+#                             hiwat_files['day1'] = os.path.join(latest_dir,file)
+#                         if 'day2' in file:
+#                             hiwat_files['day2'] = os.path.join(latest_dir,file)
+#
+#     return hiwat_files
+
 def get_hiwat_file():
 
     hiwat_files = {}
+    latest_dir = max([os.path.join(HIWAT_storage, d) for d in os.listdir(HIWAT_storage) if os.path.isdir(os.path.join(HIWAT_storage, d)) if 'allhourly' not in d])
 
-    for dir in os.listdir(HIWAT_storage):
-        if 'WRF' in dir:
-            WRF = os.path.join(HIWAT_storage, dir)
-            for store in os.listdir(WRF):
-                if 'servir_hkh' in store:
-                    hiwat_dir = os.path.join(WRF,store)
-                    latest_dir = max([os.path.join(hiwat_dir, d) for d in os.listdir(hiwat_dir)], key=os.path.getmtime)
-                    for file in os.listdir(latest_dir):
-                        if 'hourly' in file:
-                            hiwat_files['hourly'] = os.path.join(latest_dir,file)
-                        if 'Control' in file:
-                            hiwat_files['det'] = os.path.join(latest_dir,file)
-                        if 'day1' in file:
-                            hiwat_files['day1'] = os.path.join(latest_dir,file)
-                        if 'day2' in file:
-                            hiwat_files['day2'] = os.path.join(latest_dir,file)
+    print(latest_dir)
+    # print(latest_dir)
+    for file in os.listdir(latest_dir):
+        if 'hourly' in file:
+            hiwat_files['hourly'] = os.path.join(latest_dir, file)
+        if 'Control' in file:
+            hiwat_files['det'] = os.path.join(latest_dir, file)
+        if 'day1' in file:
+            hiwat_files['day1'] = os.path.join(latest_dir, file)
+        if 'day2' in file:
+            hiwat_files['day2'] = os.path.join(latest_dir, file)
 
     return hiwat_files
 

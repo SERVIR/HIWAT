@@ -22,6 +22,7 @@ var LIBRARY_OBJECT = (function() {
         det_options,
         hourly_options,
         int_type,
+        int_options,
         map,
         $modalChart,
         opacity,
@@ -75,6 +76,7 @@ var LIBRARY_OBJECT = (function() {
         det_options = JSON.parse(det_options);
         thredds_urls = $meta_element.attr('data-thredds-urls');
         thredds_urls = JSON.parse(thredds_urls);
+        int_options = {'det':'Deterministic','hourly':'Ensemble Hourly','day1':'Ensemble Day 1','day2':'Ensemble Day 2'};
 
     };
 
@@ -366,6 +368,15 @@ var LIBRARY_OBJECT = (function() {
     // the DOM tree finishes loading
     $(function() {
         init_all();
+
+        // thredds_urls.forEach(function(item,i){
+        //    console.log(item,i);
+        // });
+        $("#interval_table").html('');
+        $.each(thredds_urls,function(n){
+            var new_option = new Option(int_options[n],n);
+            $("#interval_table").append(new_option);
+        });
 
         $("#interval_table").change(function(){
             var interval_type = ($("#interval_table option:selected").val());

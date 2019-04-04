@@ -34,9 +34,9 @@ def home(request):
 
     hiwat_files = get_hiwat_file()
 
-    det_options = det_time_options(hiwat_files['det'],'det')
+    det_options = det_time_options(hiwat_files['det'], 'det')
 
-    hourly_options = hourly_time_options(hiwat_files['hourly'],'hourly')
+    hourly_options = hourly_time_options(hiwat_files['hourly'], 'hourly')
 
 
 
@@ -83,10 +83,9 @@ def leaf(request):
 
     hiwat_files = get_hiwat_file()
 
-    det_options = det_time_options(hiwat_files['det'],'det')
+    det_options = det_time_options(hiwat_files['det'], 'det')
 
-    hourly_options = hourly_time_options(hiwat_files['hourly'],'hourly')
-
+    hourly_options = hourly_time_options(hiwat_files['hourly'], 'hourly')
 
     context = {
         'select_variable':select_variable,

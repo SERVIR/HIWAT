@@ -6,11 +6,11 @@ geoserver = {'rest_url':'http://127.0.0.1:8181/geoserver/rest',
              'password':'pass',
              'workspace':'hiwat'}
 
-THREDDS_catalog = 'https://tethys.servirglobal.net/thredds/catalog/tethys/WRF/WRF/servir_hkh/'
+THREDDS_catalog = 'https://tethys.servirglobal.net/thredds/catalog/tethys/WRF/'
 
 THREDDS_wms = 'https://tethys.servirglobal.net/thredds/wms/'
 
-HIWAT_storage = '/home/sandbox/hiwat_storage/'
+HIWAT_storage = '/home/tethys/hiwat_storage/'
 
 # HIWAT_FILE = '/media/sf_Downloads/wrf_hkh_12km_met_fields_2018030518.latlon'
 #
