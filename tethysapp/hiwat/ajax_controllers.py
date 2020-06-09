@@ -1,4 +1,4 @@
-from utils import get_pt_values,get_poylgon_values
+from tethysapp.hiwat.utils import get_pt_values,get_poylgon_values
 from django.http import JsonResponse, Http404, HttpResponse
 import json
 

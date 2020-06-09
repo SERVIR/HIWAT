@@ -10,11 +10,10 @@ import calendar
 import time
 import netCDF4
 from netCDF4 import Dataset
-from config import *
+from tethysapp.hiwat.config import *
 import numpy as np
 import shapely.geometry
 import webcolors
-import cPickle
 import xml.etree.ElementTree as ET
 
 # cf = open(COLORS_PICKLE,'rb')

@@ -3,137 +3,20 @@
   <component name="ChangeListManager">
     <list default="true" id="b711ed3c-1832-4001-ad20-9ce133638d10" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tethysapp/hiwat/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/tethysapp/hiwat/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tethysapp/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tethysapp/hiwat/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/tethysapp/hiwat/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tethysapp/hiwat/ajax_controllers.py" beforeDir="false" afterPath="$PROJECT_DIR$/tethysapp/hiwat/ajax_controllers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tethysapp/hiwat/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/tethysapp/hiwat/api.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tethysapp/hiwat/controllers.py" beforeDir="false" afterPath="$PROJECT_DIR$/tethysapp/hiwat/controllers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tethysapp/hiwat/public/js/leaf.js" beforeDir="false" afterPath="$PROJECT_DIR$/tethysapp/hiwat/public/js/leaf.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tethysapp/hiwat/hiwat.py" beforeDir="false" afterPath="$PROJECT_DIR$/tethysapp/hiwat/hiwat.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tethysapp/hiwat/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/tethysapp/hiwat/utils.py" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/controllers.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="523">
-              <caret line="84" selection-start-line="84" selection-end-line="84" />
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/ajax_controllers.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="13" column="34" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
-              <folding>
-                <element signature="e#0#50#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/utils.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="388" lean-forward="true" selection-start-line="388" selection-end-line="388" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/config.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="26" column="64" selection-start-line="26" selection-start-column="64" selection-end-line="26" selection-end-column="64" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/hiwat.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="22" column="15" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="15" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/templates/hiwat/home.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="793">
-              <caret line="71" column="41" selection-start-line="71" selection-start-column="41" selection-end-line="71" selection-end-column="41" />
-              <folding>
-                <element signature="e#2929#2956#0" expanded="true" />
-                <element signature="e#3128#3149#0" expanded="true" />
-                <element signature="e#8014#8045#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/templates/hiwat/leaf.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="793">
-              <caret line="86" column="18" selection-start-line="86" selection-start-column="18" selection-end-line="86" selection-end-column="18" />
-              <folding>
-                <element signature="e#2451#2470#0" expanded="true" />
-                <element signature="e#2786#2805#0" expanded="true" />
-                <element signature="e#3050#3077#0" expanded="true" />
-                <element signature="e#3300#3321#0" expanded="true" />
-                <element signature="e#4553#4560#1" expanded="true" />
-                <element signature="e#7087#7094#1" expanded="true" />
-                <element signature="e#7372#7403#0" expanded="true" />
-                <element signature="e#8306#8336#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/public/js/leaf.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="375" selection-start-line="375" selection-end-line="375" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/app.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="28" column="31" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/public/js/hiwat.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4620">
-              <caret line="308" selection-start-line="308" selection-end-line="308" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -144,53 +27,8 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>turn_off_utilsLayers</find>
-      <find>shpLayer</find>
-      <find>Dew</find>
-      <find>sbcape</find>
-      <find>cape</find>
-      <find>uphl</find>
-      <find>gen_colo</find>
-      <find>loading</find>
-      <find>styling</find>
-      <find>gen_col</find>
-      <find>init_</find>
-      <find>get_ts</find>
-      <find>HIWAT_de</find>
-      <find>document</find>
-      <find>get_thred</find>
-      <find>get_thredds</find>
-      <find>det_time_options</find>
-      <find>get_hiwat_file</find>
-      <find>get</find>
-      <find>get_thre</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/tethysapp/hiwat/templates/hiwat/base.html" />
-        <option value="$PROJECT_DIR$/tethysapp/hiwat/public/js/main.js" />
-        <option value="$PROJECT_DIR$/tethysapp/hiwat/ajax_controllers.py" />
-        <option value="$PROJECT_DIR$/tethysapp/hiwat/public/data/var_info.txt" />
-        <option value="$USER_HOME$/tethys/src/tethys_apps/templates/tethys_apps/app_library.html" />
-        <option value="$PROJECT_DIR$/tethysapp/hiwat/public/css/main.css" />
-        <option value="$PROJECT_DIR$/tethysapp/hiwat/public/js/hiwat.js" />
-        <option value="$PROJECT_DIR$/tethysapp/hiwat/templates/hiwat/home.html" />
-        <option value="$PROJECT_DIR$/tethysapp/hiwat/app.py" />
-        <option value="$PROJECT_DIR$/tethysapp/hiwat/templates/hiwat/leaf.html" />
-        <option value="$PROJECT_DIR$/tethysapp/hiwat/hiwat.py" />
-        <option value="$PROJECT_DIR$/tethysapp/hiwat/config.py" />
-        <option value="$PROJECT_DIR$/tethysapp/hiwat/utils.py" />
-        <option value="$PROJECT_DIR$/tethysapp/hiwat/public/js/leaf.js" />
-        <option value="$PROJECT_DIR$/tethysapp/hiwat/controllers.py" />
-      </list>
-    </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="65" />
@@ -198,41 +36,19 @@
     <option name="width" value="887" />
     <option name="height" value="970" />
   </component>
+  <component name="ProjectId" id="1crByZJu9nAmwE2NgGh7oe6NqL1" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <flattenPackages />
-      <showMembers />
-      <showModules />
-      <showLibraryContents />
-      <hideEmptyPackages />
-      <abbreviatePackageNames />
-      <autoscrollToSource />
-      <autoscrollFromSource />
-      <sortByType />
-      <manualOrder />
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../tethysapp-nepal_hiwatviewer" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -246,175 +62,26 @@
       <updated>1520517013187</updated>
       <workItem from="1554319690426" duration="3340000" />
       <workItem from="1554338379400" duration="4270000" />
+      <workItem from="1591277091040" duration="3567000" />
+      <workItem from="1591281681160" duration="948000" />
     </task>
     <servers />
-  </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7610000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1855" height="979" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.5890638" />
-      <window_info id="Structure" order="1" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="11" />
-      <window_info anchor="bottom" id="Database Changes" order="12" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" />
-      <window_info anchor="right" id="Database" order="4" />
-    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/templates/hiwat/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/plots.py" />
-    <entry file="file://$USER_HOME$/tethys/src/tethys_apps/templates/tethys_apps/app_library.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1188">
-          <caret line="66" column="20" selection-start-line="66" selection-start-column="20" selection-end-line="66" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/public/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2448">
-          <caret line="136" column="44" selection-start-line="136" selection-start-column="44" selection-end-line="136" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/public/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1782">
-          <caret line="99" column="34" selection-start-line="99" selection-start-column="34" selection-end-line="99" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/public/data/var_info.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="70" selection-start-line="1" selection-start-column="67" selection-end-line="1" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/ajax_controllers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="13" column="34" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="31" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/public/js/hiwat.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4620">
-          <caret line="308" selection-start-line="308" selection-end-line="308" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/hiwat.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="22" column="15" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="15" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/templates/hiwat/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="793">
-          <caret line="71" column="41" selection-start-line="71" selection-start-column="41" selection-end-line="71" selection-end-column="41" />
-          <folding>
-            <element signature="e#2929#2956#0" expanded="true" />
-            <element signature="e#3128#3149#0" expanded="true" />
-            <element signature="e#8014#8045#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/templates/hiwat/leaf.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="793">
-          <caret line="86" column="18" selection-start-line="86" selection-start-column="18" selection-end-line="86" selection-end-column="18" />
-          <folding>
-            <element signature="e#2451#2470#0" expanded="true" />
-            <element signature="e#2786#2805#0" expanded="true" />
-            <element signature="e#3050#3077#0" expanded="true" />
-            <element signature="e#3300#3321#0" expanded="true" />
-            <element signature="e#4553#4560#1" expanded="true" />
-            <element signature="e#7087#7094#1" expanded="true" />
-            <element signature="e#7372#7403#0" expanded="true" />
-            <element signature="e#8306#8336#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="388" lean-forward="true" selection-start-line="388" selection-end-line="388" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="64" selection-start-line="26" selection-start-column="64" selection-end-line="26" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/controllers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="523">
-          <caret line="84" selection-start-line="84" selection-end-line="84" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tethysapp/hiwat/public/js/leaf.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="375" selection-start-line="375" selection-end-line="375" />
-        </state>
-      </provider>
-    </entry>
+  <component name="WindowStateProjectService">
+    <state x="776" y="259" width="424" height="491" key="FileChooserDialogImpl" timestamp="1591288116258">
+      <screen x="67" y="27" width="1853" height="948" />
+    </state>
+    <state x="776" y="259" width="424" height="491" key="FileChooserDialogImpl/67.27.1853.948@67.27.1853.948" timestamp="1591288116258" />
+    <state x="482" y="136" width="1022" height="737" key="SettingsEditor" timestamp="1591277511365">
+      <screen x="67" y="27" width="1853" height="948" />
+    </state>
+    <state x="482" y="136" width="1022" height="737" key="SettingsEditor/67.27.1853.948@67.27.1853.948" timestamp="1591277511365" />
+    <state x="649" y="328" key="com.intellij.ide.util.TipDialog" timestamp="1591281747887">
+      <screen x="67" y="27" width="1853" height="948" />
+    </state>
+    <state x="649" y="328" key="com.intellij.ide.util.TipDialog/67.27.1853.948@67.27.1853.948" timestamp="1591281747887" />
   </component>
 </project>

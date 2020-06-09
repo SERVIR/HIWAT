@@ -7,8 +7,7 @@ import numpy as np
 from itertools import groupby
 import tempfile, shutil,sys
 import calendar
-import cPickle
-from utils import *
+from tethysapp.hiwat.utils import *
 from netCDF4 import Dataset
 import netCDF4
 import gdal
@@ -17,7 +16,7 @@ import ogr
 import requests
 import random
 from collections import defaultdict
-from config import ROOT_OUTPUT_DIR
+from tethysapp.hiwat.config import ROOT_OUTPUT_DIR
 import webcolors
 
 nc_files = get_hiwat_file()
@@ -62,7 +61,7 @@ def extractRasters(filename,suffix):
                 f_name = var+'-'+dt_str+'.tif'
                 data = lis_var[var][timestep,:,:]
                 data = data[::-1, :]
-                print f_name
+                print(f_name)
                 driver = gdal.GetDriverByName('GTiff')
                 DataSet = driver.Create(os.path.join(output_dir,f_name), xsize, ysize, 1, gdal.GDT_Float32)
                 DataSet.SetGeoTransform(GeoT)
@@ -109,7 +108,7 @@ def extractHourlyRasters(filename,suffix):
                 dt_str = netCDF4.num2date(lis_var['time'][timestep],units = lis_var['time'].units,calendar = lis_var['time'].calendar)
                 dt_str = datetime.datetime.strftime(dt_str,'%Y_%m_%d_%H_%M')
                 f_name = var + '-' + dt_str + '.tif'
-                print f_name
+                print(f_name)
                 driver = gdal.GetDriverByName('GTiff')
                 DataSet = driver.Create(os.path.join(output_dir,f_name), xsize, ysize, 1, gdal.GDT_Float32)
                 DataSet.SetGeoTransform(GeoT)
@@ -133,7 +132,7 @@ def extractDailyRasters(filename,suffix):
 
     for var in lis_var:
         if var not in toexclude:
-            print var
+            print(var)
             xsize, ysize, GeoT, Projection, NDV = get_netcdf_info(filename, var)
 
             lat = lis_var['latitude'][:]
@@ -144,7 +143,7 @@ def extractDailyRasters(filename,suffix):
             dt_str = suffix
 
             f_name = var + '-' + dt_str + '.tif'
-            print f_name
+            print(f_name)
             driver = gdal.GetDriverByName('GTiff')
             DataSet = driver.Create(os.path.join(output_dir,f_name), xsize, ysize, 1, gdal.GDT_Float32)
             DataSet.SetGeoTransform(GeoT)

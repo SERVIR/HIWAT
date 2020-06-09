@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from tethys_sdk.gizmos import Button,SelectInput
-from config import geoserver
-from utils import generate_variables_meta,get_thredds_info,get_hiwat_file
-from hiwat import det_time_options,hourly_time_options
+from tethysapp.hiwat.config import geoserver
+from tethysapp.hiwat.utils import generate_variables_meta,get_thredds_info,get_hiwat_file
+from tethysapp.hiwat.hiwat import det_time_options,hourly_time_options
 import json
 
 def home(request):

@@ -20,7 +20,7 @@ def get_data(request):
 from django.http import JsonResponse
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import api_view, authentication_classes
-from utils import get_pt_values,get_poylgon_values
+from tethysapp.hiwat.utils import get_pt_values,get_poylgon_values
 
 def get_point_ts(request):
     json_obj = {}
