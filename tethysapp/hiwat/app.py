@@ -6,7 +6,7 @@ class Hiwat(TethysAppBase):
     Tethys app class for HIWAT.
     """
 
-    name = 'HIWAT'
+    name = 'HIWAT HKH'
     index = 'hiwat:home'
     icon = 'hiwat/images/logo.png'
     package = 'hiwat'

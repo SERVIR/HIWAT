@@ -6,9 +6,9 @@ geoserver = {'rest_url':'http://127.0.0.1:8181/geoserver/rest',
              'password':'pass',
              'workspace':'hiwat'}
 
-THREDDS_catalog = 'https://tethys.servirglobal.net/thredds/catalog/tethys/WRF/'
+THREDDS_catalog = 'https://thredds.servirglobal.net/thredds/catalog/hkh/'
 
-THREDDS_wms = 'https://tethys.servirglobal.net/thredds/wms/'
+THREDDS_wms = 'https://thredds.servirglobal.net/thredds/wms/'
 
 HIWAT_storage = '/home/tethys/hiwat_storage/'
 
