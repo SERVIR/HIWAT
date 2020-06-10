@@ -10,7 +10,7 @@ THREDDS_catalog = 'https://thredds.servirglobal.net/thredds/catalog/hkh/'
 
 THREDDS_wms = 'https://thredds.servirglobal.net/thredds/wms/'
 
-HIWAT_storage = '/home/tethys/hiwat_storage/'
+HIWAT_storage = '/mnt/hiwat/hkh/'
 
 # HIWAT_FILE = '/media/sf_Downloads/wrf_hkh_12km_met_fields_2018030518.latlon'
 #
