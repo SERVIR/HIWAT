@@ -15,7 +15,9 @@ import numpy as np
 import shapely.geometry
 import webcolors
 import xml.etree.ElementTree as ET
+import logging
 
+log=logging.getLogger(__name__)
 # cf = open(COLORS_PICKLE,'rb')
 # cPick = cPickle.load(cf)
 # cf.close()
@@ -435,7 +437,10 @@ def get_hiwat_file():
     for file in os.listdir(latest_dir):
         if 'hourly' in file:
             hiwat_files['hourly'] = os.path.join(latest_dir, file)
+            os.path.join(latest_dir, file)
         if 'Control' in file:
+            log.info(file)
+            os.path.join(latest_dir, file)
             hiwat_files['det'] = os.path.join(latest_dir, file)
         if 'day1' in file:
             hiwat_files['day1'] = os.path.join(latest_dir, file)
