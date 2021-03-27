@@ -10,9 +10,9 @@ import calendar
 from tethysapp.hiwat.utils import *
 from netCDF4 import Dataset
 import netCDF4
-import gdal
-import osr
-import ogr
+from osgeo import gdal
+from osgeo import osr
+from osgeo import ogr
 import requests
 import random
 from collections import defaultdict
