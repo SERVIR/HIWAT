@@ -10,7 +10,7 @@ THREDDS_catalog = 'https://thredds.servirglobal.net/thredds/catalog/hkh/'
 
 THREDDS_wms = 'https://thredds.servirglobal.net/thredds/wms/'
 
-HIWAT_storage = '/mnt/hiwat/hkh/THREDDS/'
+HIWAT_storage = '/mnt/hiwat/hkh/THREDDS'
 
 # HIWAT_FILE = '/media/sf_Downloads/wrf_hkh_12km_met_fields_2018030518.latlon'
 #
@@ -24,4 +24,4 @@ HIWAT_storage = '/mnt/hiwat/hkh/THREDDS/'
 
 ROOT_OUTPUT_DIR = '/media/sf_Downloads/hiwat_data/'
 
-COLORS_PICKLE = '/media/sf_Downloads/wrf_hkh_nc/gradscolors.pkl'
+COLORS_PICKLE = '/media/sf_Downloads/wrf_hkh_nc/gradscolors.pkl' 

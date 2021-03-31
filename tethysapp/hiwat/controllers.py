@@ -6,6 +6,7 @@ from tethysapp.hiwat.utils import generate_variables_meta,get_thredds_info,get_h
 from tethysapp.hiwat.hiwat import det_time_options,hourly_time_options
 import json
 
+
 def home(request):
     """
     Controller for the app home page.
@@ -32,11 +33,17 @@ def home(request):
 
     geoserver_wms_url = geoserver["wms_url"]
 
-    hiwat_files = get_hiwat_file()
+    try:
+    	hiwat_files = get_hiwat_file()
 
-    det_options = det_time_options(hiwat_files['det'], 'det')
+    	det_options = det_time_options(hiwat_files['det'], 'det')
 
-    hourly_options = hourly_time_options(hiwat_files['hourly'], 'hourly')
+    	hourly_options = hourly_time_options(hiwat_files['hourly'], 'hourly')
+    except:
+
+    	det_options = {}
+    	hourly_options = {} 
+
 
 
 
@@ -81,11 +88,17 @@ def leaf(request):
 
     var_options = generate_variables_meta()
 
-    hiwat_files = get_hiwat_file()
 
-    det_options = det_time_options(hiwat_files['det'], 'det')
+    try:
+    	hiwat_files = get_hiwat_file()
 
-    hourly_options = hourly_time_options(hiwat_files['hourly'], 'hourly')
+    	det_options = det_time_options(hiwat_files['det'], 'det')
+
+    	hourly_options = hourly_time_options(hiwat_files['hourly'], 'hourly')
+    except:
+
+    	det_options = {}
+    	hourly_options = {} 
 
     context = {
         'select_variable':select_variable,

@@ -430,8 +430,7 @@ def get_thredds_info():
 def get_hiwat_file():
 
     hiwat_files = {}
-    latest_dir = max([os.path.join(HIWAT_storage, d) for d in os.listdir(HIWAT_storage) if os.path.isdir(os.path.join(HIWAT_storage, d)) if 'allhourly' not in d if 'RAPID_OUTPUT' not in d])
-
+    latest_dir = max([os.path.join(HIWAT_storage, d) for d in os.listdir(HIWAT_storage) if os.path.isdir(os.path.join(HIWAT_storage, d)) if 'allhourly' not in d if 'RAPID_OUTPUT' not in d if 'failures' not in d])
     print(latest_dir)
     # print(latest_dir)
     for file in os.listdir(latest_dir):
