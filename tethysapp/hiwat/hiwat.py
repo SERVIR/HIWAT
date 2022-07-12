@@ -19,7 +19,7 @@ from collections import defaultdict
 from tethysapp.hiwat.config import ROOT_OUTPUT_DIR
 import webcolors
 
-nc_files = get_hiwat_file()
+
 
 try:
     HIWAT_DET = nc_files['det']
@@ -203,6 +203,14 @@ def gen_dropdown_opts(file,category):
     return options
 
 def update_var_info_file():
+    nc_files = get_hiwat_file()
+    try:
+        HIWAT_DET = nc_files['det']
+        HIWAT_HOURLY = nc_files['hourly']
+        HIWAT_DAY1 = nc_files['day1']
+        HIWAT_DAY2 = nc_files['day2']
+    except Exception as e:
+        pass
 
     db_file = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'public/data/var_info.txt')
     det_var_options = gen_dropdown_opts(HIWAT_DET,'det')

@@ -372,17 +372,20 @@ def get_thredds_info():
             # if 'title' in k and '2018' in v:
                 possible_dates.append(v)
 
+    temp_list = []
     for date in possible_dates:
         try:
 
-            valid_date = datetime.datetime.strptime(date, "%Y%m%d18")
+            valid_date = datetime.datetime.strptime(date, "%Y%m%d" + date[-2:])
             valid_dates.append(valid_date)
-
+            if date[-2:] not in temp_list:
+                temp_list.append(date[-2:])
         except Exception as e:
             continue
-
-
-    latest_date = max(valid_dates).strftime("%Y%m%d18")
+    for suffix in temp_list:
+        if possible_dates.__contains__(max(valid_dates).strftime("%Y%m%d" + suffix)):
+            latest_date = max(valid_dates).strftime("%Y%m%d" + suffix)
+            break
 
     date_xml_url = catalog_url + latest_date + '/catalog.xml'
 
@@ -394,13 +397,13 @@ def get_thredds_info():
         for k, v in el.items():
             if 'urlPath' in k:
                 if 'Control' in v:
-                    urls_obj['det'] = catalog_wms+v
+                    urls_obj['det'] = catalog_wms + v
                 if 'hourly' in v:
-                    urls_obj['hourly'] = catalog_wms+v
+                    urls_obj['hourly'] = catalog_wms + v
                 if 'day1' in v:
-                    urls_obj['day1'] = catalog_wms+v
+                    urls_obj['day1'] = catalog_wms + v
                 if 'day2' in v:
-                    urls_obj['day2'] = catalog_wms+v
+                    urls_obj['day2'] = catalog_wms + v
 
     return urls_obj
 
